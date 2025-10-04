@@ -1,5 +1,5 @@
 "use client"
-import { useDeterminePair } from "@src/app/(home)/_utils/useDeterminePair"
+import { useDeterminePair } from "@src/app/home/_utils/useDeterminePair"
 import { OtcMakerWidget } from "@src/components/DefuseSDK/features/otcDesk/components/OtcMakerWidget"
 import Paper from "@src/components/Paper"
 import { LIST_TOKENS } from "@src/constants/tokens"

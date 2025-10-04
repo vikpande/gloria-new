@@ -1,28 +1,17 @@
-import type { Metadata } from "next"
-import type React from "react"
-import type { PropsWithChildren } from "react"
-
-import Layout from "@src/components/Layout"
+import GloriaLayout from "@src/components/Layout/Gloria"
 import { PreloadFeatureFlags } from "@src/components/PreloadFeatureFlags"
-import { whitelabelTemplateFlag } from "@src/config/featureFlags"
 import { settings } from "@src/config/settings"
+import type { Metadata } from "next"
+import type { ReactNode } from "react"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const templ = await whitelabelTemplateFlag()
-
-  if (templ !== "dogecoinswap") {
-    return settings.metadata.home
-  }
-
-  return {}
+export function generateMetadata(): Metadata {
+  return settings.metadata.account
 }
 
-const SwapLayout: React.FC<PropsWithChildren> = ({ children }) => {
+export default function NewsLayout({ children }: { children: ReactNode }) {
   return (
     <PreloadFeatureFlags>
-      <Layout>{children}</Layout>
+      <GloriaLayout>{children}</GloriaLayout>
     </PreloadFeatureFlags>
   )
 }
-
-export default SwapLayout

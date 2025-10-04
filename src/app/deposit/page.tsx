@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import {
   updateURLParamsDeposit,
   useDeterminePair,
-} from "../(home)/_utils/useDeterminePair"
+} from "../home/_utils/useDeterminePair"
 
 export default function Deposit() {
   const { state, sendTransaction } = useConnectWallet()
@@ -26,8 +26,8 @@ export default function Deposit() {
         userAddress={state.isVerified ? state.address : undefined}
         userWalletAddress={
           state.isVerified &&
-          state.chainType !== ChainType.WebAuthn &&
-          state.displayAddress
+            state.chainType !== ChainType.WebAuthn &&
+            state.displayAddress
             ? state.displayAddress
             : null
         }
