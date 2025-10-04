@@ -1,0 +1,65 @@
+[
+    {
+        "id": "stocks",
+        "name": "Stocks",
+        "description": "Stock market predictions and company performance",
+        "color": "#3b82f6",
+        "icon": "📈"
+    },
+    {
+        "id": "crypto",
+        "name": "Crypto",
+        "description": "Cryptocurrency and blockchain predictions",
+        "color": "#f59e0b",
+        "icon": "₿"
+    },
+    {
+        "id": "technology",
+        "name": "Technology",
+        "description": "Tech industry and innovation predictions",
+        "color": "#10b981",
+        "icon": "💻"
+    },
+    {
+        "id": "politics",
+        "name": "Politics",
+        "description": "Political events and government predictions",
+        "color": "#ef4444",
+        "icon": "🏛️"
+    },
+    {
+        "id": "economics",
+        "name": "Economics",
+        "description": "Economic indicators and financial predictions",
+        "color": "#8b5cf6",
+        "icon": "💰"
+    },
+    {
+        "id": "elections",
+        "name": "Elections",
+        "description": "Election outcomes and political campaigns",
+        "color": "#06b6d4",
+        "icon": "🗳️"
+    },
+    {
+        "id": "sports",
+        "name": "Sports",
+        "description": "Sports events and athletic competitions",
+        "color": "#84cc16",
+        "icon": "⚽"
+    },
+    {
+        "id": "world",
+        "name": "World",
+        "description": "Global events and international affairs",
+        "color": "#6366f1",
+        "icon": "🌍"
+    },
+    {
+        "id": "other",
+        "name": "Other",
+        "description": "Miscellaneous predictions and events",
+        "color": "#6b7280",
+        "icon": "📊"
+    }
+]

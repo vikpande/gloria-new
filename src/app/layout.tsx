@@ -28,6 +28,7 @@ import {
   HELPSCOUT_BEACON_ID,
   VERCEL_PROJECT_PRODUCTION_URL,
 } from "@src/utils/environment"
+//import "@src/app/global.scss";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -146,7 +147,7 @@ const RootLayout = async ({
           </WagmiProvider>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-WNE3NB46KM" />
+      {/* <GoogleAnalytics gaId="G-WNE3NB46KM" /> */}
       {HELPSCOUT_BEACON_ID && <Helpscout />}
     </html>
   )

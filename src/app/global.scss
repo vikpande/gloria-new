@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+body {
+    font-family: var(--font-geist-sans, sans-serif);
+    background: #ffffff;
+    color: #222;
+}
+
+/* Utilities */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Custom scrollbar (chat area) */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Ant Design overrides */
+
+/* Layout / Header */
+.ant-layout-header {
+    background: #ffffff !important;
+    border-bottom: none !important;
+}
+
+/* Card */
+.ant-card {
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+}
+
+.ant-card:hover {
+    border-color: #e0e0e0;
+}
+
+/* Tag */
+.ant-tag {
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 11px;
+    padding: 2px 8px;
+    line-height: 1.4;
+}
+
+/* Buttons & Inputs */
+.ant-btn-primary {
+    background: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.ant-btn-primary:hover {
+    background: #333 !important;
+    border-color: #333 !important;
+    color: #fff !important;
+}
+
+.ant-btn-primary:focus {
+    background: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+}
+
+.ant-input,
+.ant-input-affix-wrapper {
+    border-radius: 8px;
+}
+
+.ant-input:hover,
+.ant-input-affix-wrapper:hover {
+    border-color: #d9d9d9 !important;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper-focused {
+    border-color: #d9d9d9 !important;
+    box-shadow: none !important;
+}
+
+
+/* Menu (Header navigation) */
+.ant-menu-horizontal .ant-menu-item {
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 8px !important;
+    margin: 2px 1px !important;
+    transition: all 0.2s ease !important;
+}
+
+.ant-menu-horizontal .ant-menu-item::after {
+    display: none !important;
+    /* remove underline */
+}
+
+.ant-menu-horizontal .ant-menu-item-selected {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.ant-menu-horizontal .ant-menu-item:hover {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ant-layout-sider {
+        position: fixed !important;
+        right: 0;
+        top: 64px;
+        height: calc(100vh - 64px);
+        z-index: 1000;
+    }
+}
+
+.pref-tag.ant-tag,
+.pref-tag.ant-tag-checkable {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 28px !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    border-radius: 6px !important;
+    border: 1px solid #e5e7eb !important;
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+    transition: background 0.15s ease;
+}
+
+.pref-tag.ant-tag:hover {
+    background: #e5e7eb !important;
+}
+
+.pref-tag.ant-tag-checkable-checked {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+}
+
+/* Personal Preferences card spacing fix */
+.pref-card .ant-card-body {
+    padding-bottom: 8px !important;
+}
+
+/* Assistant Drawer for Mobile */
+.assistant-drawer {
+    .ant-drawer-body {
+        padding: 0 !important;
+    }
+
+    .ant-drawer-header {
+        display: none !important;
+    }
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected,
+.ant-menu-horizontal>.ant-menu-item-selected {
+    background: #000 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+}
+
+/* make sure the label inside also flips to white */
+.ant-menu-horizontal .ant-menu-item-selected .ant-menu-title-content,
+.ant-menu-horizontal .ant-menu-item-selected .ant-menu-item-icon {
+    color: #fff !important;
+}

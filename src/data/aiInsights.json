@@ -1,0 +1,66 @@
+{
+    "summary": {
+        "modelProb": 0.64,
+        "deltaPct": 3
+    },
+    "historical": [
+        {
+            "label": "Avg YES price (30d)",
+            "value": "58¢",
+            "note": "+12% vs prior 30d",
+            "conf": "High"
+        },
+        {
+            "label": "Support zone",
+            "value": "52–55¢",
+            "note": "tested 3× in 2 weeks",
+            "conf": "Med"
+        },
+        {
+            "label": "30d volatility",
+            "value": "22%",
+            "note": "calm last 3d",
+            "conf": "Med"
+        }
+    ],
+    "experts": [
+        {
+            "source": "MacroAlpha",
+            "stance": "Bullish",
+            "weight": 0.7,
+            "take": "Fiscal pressure + seasonal risk elevate odds into month-end."
+        },
+        {
+            "source": "EconDesk",
+            "stance": "Neutral",
+            "weight": 0.5,
+            "take": "Base case unchanged; watch Thursday votes for path clarity."
+        },
+        {
+            "source": "RiskLabs",
+            "stance": "Bearish",
+            "weight": 0.4,
+            "take": "Market overreacted to headline; odds drift after weekend."
+        }
+    ],
+    "news": [
+        {
+            "title": "House leadership signals compromise path",
+            "sentiment": "Positive",
+            "impact": "+8–12¢",
+            "time": "2h ago"
+        },
+        {
+            "title": "Opposition caucus hardens stance",
+            "sentiment": "Negative",
+            "impact": "−5–8¢",
+            "time": "9h ago"
+        },
+        {
+            "title": "Social: retail flows tilt YES 62%",
+            "sentiment": "Mixed",
+            "impact": "~",
+            "time": "Today"
+        }
+    ]
+}
