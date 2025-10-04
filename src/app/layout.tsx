@@ -28,7 +28,7 @@ import {
   HELPSCOUT_BEACON_ID,
   VERCEL_PROJECT_PRODUCTION_URL,
 } from "@src/utils/environment"
-//import "@src/app/global.scss";
+import "./gloria.scss";
 
 export const viewport: Viewport = {
   width: "device-width",

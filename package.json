@@ -137,6 +137,11 @@
     "typescript": "^5",
     "vitest": "^3.2.4"
   },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "bun biome check --write"
+    ]
+  },
   "engines": {
     "bun": "^1.0.0"
   },

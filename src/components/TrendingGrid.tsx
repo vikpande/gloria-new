@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { Segmented } from "antd";
 import { FireOutlined } from "@ant-design/icons";
-import MarketCard, { MarketCardProps } from "@/components/MarketCard";
+import MarketCard, { MarketCardProps } from "@src/components/MarketCard";
 
 type SortKey = "gainers" | "volume" | "ending";
 type WindowKey = "24h" | "7d";

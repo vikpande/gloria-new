@@ -25,7 +25,7 @@ import {
   BarChartOutlined,
   GiftOutlined,
 } from "@ant-design/icons";
-import { getCategoryNames } from "@/utils/categories";
+import { getCategoryNames } from "@src/utils/categories";
 
 const { Title, Text } = Typography;
 const { CheckableTag } = Tag;
@@ -325,11 +325,10 @@ const ProfilePage: React.FC = () => {
             {LEVELS.map((l) => (
               <Tag
                 key={l.key}
-                className={`border-0 ${
-                  levelInfo.current === l.key
-                    ? "bg-black text-white"
-                    : "bg-gray-100 text-gray-700"
-                }`}
+                className={`border-0 ${levelInfo.current === l.key
+                  ? "bg-black text-white"
+                  : "bg-gray-100 text-gray-700"
+                  }`}
               >
                 {l.key}
               </Tag>

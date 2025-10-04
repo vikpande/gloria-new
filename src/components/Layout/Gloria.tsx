@@ -33,7 +33,7 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
 
 
   const onMenuClick = (key: any) => {
-    router.push(key)
+    router.push("/" + key)
   }
 
   const onHideAssistant = () => setIsAssistantVisible((v) => !v)

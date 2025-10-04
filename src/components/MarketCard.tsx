@@ -107,7 +107,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
           color="green"
           disabled={disabled}
           onClick={() => onYes?.(id)}
-          className="h-10 rounded-md bg-green-500 hover:bg-green-600 text-white font-medium"
+          className="h-10 rounded-md bg-green-500 hover:bg-green-600 text-green-600 font-medium"
         >
           YES ${yesPrice.toFixed(2)}
         </Button>
@@ -116,7 +116,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
           color="danger"
           disabled={disabled}
           onClick={() => onNo?.(id)}
-          className="h-10 rounded-md bg-red-500 hover:bg-red-600 text-white font-medium"
+          className="h-10 rounded-md bg-red-500 hover:bg-red-600 text-red-600 font-medium"
         >
           NO ${noPrice.toFixed(2)}
         </Button>

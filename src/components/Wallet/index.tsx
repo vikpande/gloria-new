@@ -40,10 +40,8 @@ const ConnectWallet = () => {
     return (
       <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
         <Popover.Trigger>
-          <Button type={"button"} variant={"solid"} size={"2"} radius={"full"}>
-            <Text weight="bold" wrap="nowrap">
-              Sign in
-            </Text>
+          <Button className="bg-black hover:bg-gray-900">
+            Sign in
           </Button>
         </Popover.Trigger>
         <Popover.Content
@@ -58,7 +56,7 @@ const ConnectWallet = () => {
               Popular options
             </Text>
 
-            {/* {isSupportedByBrowser() && (
+            {isSupportedByBrowser() && (
               <Button
                 onClick={() => handlePasskey()}
                 size="4"
@@ -79,7 +77,9 @@ const ConnectWallet = () => {
                   </Text>
                 </div>
               </Button>
-            )} */}
+            )}
+
+
 
             {whitelabelTemplate === "turboswap" ? (
               <>
