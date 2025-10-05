@@ -88,9 +88,9 @@ export function OtcMakerForm({
     () =>
       userAddress != null && chainType != null
         ? {
-          credential: userAddress,
-          credentialType: chainType,
-        }
+            credential: userAddress,
+            credentialType: chainType,
+          }
         : null,
     [userAddress, chainType]
   )
@@ -214,8 +214,8 @@ export function OtcMakerForm({
         rootActorRef,
         (state) =>
           state.children.signRef as
-          | undefined
-          | ActorRefFrom<typeof otcMakerSignMachine>
+            | undefined
+            | ActorRefFrom<typeof otcMakerSignMachine>
       ),
       (state) => {
         if (state) {

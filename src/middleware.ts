@@ -2,7 +2,6 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 import { csp } from "@src/config/csp"
-import { maintenanceModeFlag } from "@src/config/featureFlags"
 import { logger } from "@src/utils/logger"
 
 export const config = {
@@ -18,7 +17,7 @@ export async function middleware(request: NextRequest) {
       return legacyRedirect
     }
 
-    const isMaintenanceMode = false; 
+    const isMaintenanceMode = false
     // await maintenanceModeFlag()
 
     if (isMaintenanceMode) {

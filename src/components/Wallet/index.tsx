@@ -3,10 +3,11 @@
 import { Popover, Text } from "@radix-ui/themes"
 
 import Image from "next/image"
-import { useContext } from "react"
 import { useRouter } from "next/navigation"
+import { useContext } from "react"
 import type { Connector } from "wagmi"
 
+import { WalletOutlined } from "@ant-design/icons"
 import WalletConnections from "@src/components/Wallet/WalletConnections"
 import { isSupportedByBrowser } from "@src/features/webauthn/lib/webauthnService"
 import { ChainType, useConnectWallet } from "@src/hooks/useConnectWallet"
@@ -14,9 +15,8 @@ import useShortAccountId from "@src/hooks/useShortAccountId"
 import { FeatureFlagsContext } from "@src/providers/FeatureFlagsProvider"
 import { useSignInWindowOpenState } from "@src/stores/useSignInWindowOpenState"
 import { mapStringToEmojis } from "@src/utils/emoji"
-import { TonConnectButton } from "./TonConnectButton"
 import { Button } from "antd"
-import { WalletOutlined } from "@ant-design/icons"
+import { TonConnectButton } from "./TonConnectButton"
 
 const ConnectWallet = () => {
   const { isOpen, setIsOpen } = useSignInWindowOpenState()
@@ -45,7 +45,10 @@ const ConnectWallet = () => {
     return (
       <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
         <Popover.Trigger>
-          <Button className="bg-black text-white hover:bg-gray-900">
+          <Button
+            type="primary"
+            className="bg-black text-white hover:bg-gray-900"
+          >
             Sign in
           </Button>
         </Popover.Trigger>
@@ -328,26 +331,24 @@ const ConnectWallet = () => {
         <>
           <div className="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-sm">
             <WalletOutlined className="text-gray-600" />
-            <Text className="text-sm font-medium text-gray-900">
-              $4,000
-            </Text>
+            <Text className="text-sm font-medium text-gray-900">$4,000</Text>
           </div>
 
           <Button
             className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
-            onClick={() => router.push('/swap')}
+            onClick={() => router.push("/swap")}
           >
             Swap
           </Button>
           <Button
             className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
-            onClick={() => router.push('/deposit')}
+            onClick={() => router.push("/deposit")}
           >
             Deposit
           </Button>
           <Button
             className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
-            onClick={() => router.push('/account')}
+            onClick={() => router.push("/account")}
           >
             Account
           </Button>

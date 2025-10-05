@@ -1,157 +1,157 @@
 [
-    {
-        "id": "t1",
-        "title": "Will Bitcoin hit $150k by end of 2025?",
-        "description": "Bitcoin reaching $150,000 USD by December 31, 2025",
-        "category": "Crypto",
-        "date": "2025-12-31",
-        "yesPrice": 68,
-        "noPrice": 32,
-        "volume": 4200000,
-        "probability": 68,
-        "trend": "up",
-        "aiInsight": {
-            "summary": "Strong bullish momentum with institutional adoption driving price",
-            "keyFactors": [
-                "ETF approvals increasing institutional demand",
-                "Halving event reducing supply pressure",
-                "Growing adoption in emerging markets"
-            ],
-            "riskFactors": [
-                "Regulatory crackdowns in major markets",
-                "Macroeconomic headwinds affecting risk assets"
-            ],
-            "confidence": 78
-        }
-    },
-    {
-        "id": "t2",
-        "title": "Will AI replace 20% of jobs by 2025?",
-        "description": "AI automation job displacement prediction",
-        "category": "Technology",
-        "date": "2025-12-31",
-        "yesPrice": 42,
-        "noPrice": 58,
-        "volume": 3800000,
-        "probability": 42,
-        "trend": "neutral",
-        "aiInsight": {
-            "summary": "Moderate displacement expected, primarily in repetitive tasks",
-            "keyFactors": [
-                "Rapid advancement in LLM capabilities",
-                "Cost reduction in AI deployment",
-                "Business pressure for efficiency gains"
-            ],
-            "riskFactors": [
-                "Regulatory pushback protecting jobs",
-                "Technical limitations in complex reasoning",
-                "Resistance from workforce and unions"
-            ],
-            "confidence": 65
-        }
-    },
-    {
-        "id": "t3",
-        "title": "Will the Fed cut rates below 3% in 2025?",
-        "description": "Federal Reserve interest rate cut below 3% prediction",
-        "category": "Economics",
-        "date": "2025-12-31",
-        "yesPrice": 55,
-        "noPrice": 45,
-        "volume": 2900000,
-        "probability": 55,
-        "trend": "down",
-        "aiInsight": {
-            "summary": "Likely rate cuts as inflation moderates and growth slows",
-            "keyFactors": [
-                "Inflation trending toward 2% target",
-                "Economic growth deceleration",
-                "Labor market cooling"
-            ],
-            "riskFactors": [
-                "Persistent inflation above target",
-                "Strong economic data preventing cuts",
-                "Global economic uncertainty"
-            ],
-            "confidence": 72
-        }
-    },
-    {
-        "id": "t4",
-        "title": "Will NVIDIA reach $1,200 by year end 2025?",
-        "description": "NVIDIA stock price reaching $1,200 by Dec 31, 2025",
-        "category": "Stocks",
-        "date": "2025-12-31",
-        "yesPrice": 58,
-        "noPrice": 42,
-        "volume": 5200000,
-        "probability": 58,
-        "trend": "up",
-        "aiInsight": {
-            "summary": "AI chip demand driving strong growth fundamentals",
-            "keyFactors": [
-                "Data center AI chip demand surge",
-                "Enterprise AI adoption acceleration",
-                "Dominant market position in GPU space"
-            ],
-            "riskFactors": [
-                "Competition from AMD and custom chips",
-                "Potential oversupply in AI chips",
-                "Geopolitical tensions affecting exports"
-            ],
-            "confidence": 71
-        }
-    },
-    {
-        "id": "t5",
-        "title": "Will Apple release Vision Pro 2 in 2025?",
-        "description": "Apple Vision Pro 2 launch prediction",
-        "category": "Technology",
-        "date": "2025-12-31",
-        "yesPrice": 72,
-        "noPrice": 28,
-        "volume": 2100000,
-        "probability": 72,
-        "trend": "up",
-        "aiInsight": {
-            "summary": "High probability of release based on Apple's product cycle",
-            "keyFactors": [
-                "Typical 2-year refresh cycle for new product categories",
-                "Strong developer ecosystem building",
-                "Price point optimization for broader adoption"
-            ],
-            "riskFactors": [
-                "Technical challenges in miniaturization",
-                "Market feedback requiring major redesigns",
-                "Supply chain constraints"
-            ],
-            "confidence": 82
-        }
-    },
-    {
-        "id": "t6",
-        "title": "Will Ethereum reach $8,000 in 2025?",
-        "description": "Ethereum price reaching $8,000 prediction",
-        "category": "Crypto",
-        "date": "2025-12-31",
-        "yesPrice": 61,
-        "noPrice": 39,
-        "volume": 3400000,
-        "probability": 61,
-        "trend": "up",
-        "aiInsight": {
-            "summary": "Strong fundamentals with DeFi and institutional adoption",
-            "keyFactors": [
-                "EIP-4844 reducing transaction costs",
-                "Growing institutional staking",
-                "DeFi ecosystem expansion"
-            ],
-            "riskFactors": [
-                "Regulatory uncertainty for smart contracts",
-                "Competition from other L1s",
-                "Technical scaling challenges"
-            ],
-            "confidence": 69
-        }
+  {
+    "id": "t1",
+    "title": "Will Bitcoin hit $150k by end of 2025?",
+    "description": "Bitcoin reaching $150,000 USD by December 31, 2025",
+    "category": "Crypto",
+    "date": "2025-12-31",
+    "yesPrice": 68,
+    "noPrice": 32,
+    "volume": 4200000,
+    "probability": 68,
+    "trend": "up",
+    "aiInsight": {
+      "summary": "Strong bullish momentum with institutional adoption driving price",
+      "keyFactors": [
+        "ETF approvals increasing institutional demand",
+        "Halving event reducing supply pressure",
+        "Growing adoption in emerging markets"
+      ],
+      "riskFactors": [
+        "Regulatory crackdowns in major markets",
+        "Macroeconomic headwinds affecting risk assets"
+      ],
+      "confidence": 78
     }
+  },
+  {
+    "id": "t2",
+    "title": "Will AI replace 20% of jobs by 2025?",
+    "description": "AI automation job displacement prediction",
+    "category": "Technology",
+    "date": "2025-12-31",
+    "yesPrice": 42,
+    "noPrice": 58,
+    "volume": 3800000,
+    "probability": 42,
+    "trend": "neutral",
+    "aiInsight": {
+      "summary": "Moderate displacement expected, primarily in repetitive tasks",
+      "keyFactors": [
+        "Rapid advancement in LLM capabilities",
+        "Cost reduction in AI deployment",
+        "Business pressure for efficiency gains"
+      ],
+      "riskFactors": [
+        "Regulatory pushback protecting jobs",
+        "Technical limitations in complex reasoning",
+        "Resistance from workforce and unions"
+      ],
+      "confidence": 65
+    }
+  },
+  {
+    "id": "t3",
+    "title": "Will the Fed cut rates below 3% in 2025?",
+    "description": "Federal Reserve interest rate cut below 3% prediction",
+    "category": "Economics",
+    "date": "2025-12-31",
+    "yesPrice": 55,
+    "noPrice": 45,
+    "volume": 2900000,
+    "probability": 55,
+    "trend": "down",
+    "aiInsight": {
+      "summary": "Likely rate cuts as inflation moderates and growth slows",
+      "keyFactors": [
+        "Inflation trending toward 2% target",
+        "Economic growth deceleration",
+        "Labor market cooling"
+      ],
+      "riskFactors": [
+        "Persistent inflation above target",
+        "Strong economic data preventing cuts",
+        "Global economic uncertainty"
+      ],
+      "confidence": 72
+    }
+  },
+  {
+    "id": "t4",
+    "title": "Will NVIDIA reach $1,200 by year end 2025?",
+    "description": "NVIDIA stock price reaching $1,200 by Dec 31, 2025",
+    "category": "Stocks",
+    "date": "2025-12-31",
+    "yesPrice": 58,
+    "noPrice": 42,
+    "volume": 5200000,
+    "probability": 58,
+    "trend": "up",
+    "aiInsight": {
+      "summary": "AI chip demand driving strong growth fundamentals",
+      "keyFactors": [
+        "Data center AI chip demand surge",
+        "Enterprise AI adoption acceleration",
+        "Dominant market position in GPU space"
+      ],
+      "riskFactors": [
+        "Competition from AMD and custom chips",
+        "Potential oversupply in AI chips",
+        "Geopolitical tensions affecting exports"
+      ],
+      "confidence": 71
+    }
+  },
+  {
+    "id": "t5",
+    "title": "Will Apple release Vision Pro 2 in 2025?",
+    "description": "Apple Vision Pro 2 launch prediction",
+    "category": "Technology",
+    "date": "2025-12-31",
+    "yesPrice": 72,
+    "noPrice": 28,
+    "volume": 2100000,
+    "probability": 72,
+    "trend": "up",
+    "aiInsight": {
+      "summary": "High probability of release based on Apple's product cycle",
+      "keyFactors": [
+        "Typical 2-year refresh cycle for new product categories",
+        "Strong developer ecosystem building",
+        "Price point optimization for broader adoption"
+      ],
+      "riskFactors": [
+        "Technical challenges in miniaturization",
+        "Market feedback requiring major redesigns",
+        "Supply chain constraints"
+      ],
+      "confidence": 82
+    }
+  },
+  {
+    "id": "t6",
+    "title": "Will Ethereum reach $8,000 in 2025?",
+    "description": "Ethereum price reaching $8,000 prediction",
+    "category": "Crypto",
+    "date": "2025-12-31",
+    "yesPrice": 61,
+    "noPrice": 39,
+    "volume": 3400000,
+    "probability": 61,
+    "trend": "up",
+    "aiInsight": {
+      "summary": "Strong fundamentals with DeFi and institutional adoption",
+      "keyFactors": [
+        "EIP-4844 reducing transaction costs",
+        "Growing institutional staking",
+        "DeFi ecosystem expansion"
+      ],
+      "riskFactors": [
+        "Regulatory uncertainty for smart contracts",
+        "Competition from other L1s",
+        "Technical scaling challenges"
+      ],
+      "confidence": 69
+    }
+  }
 ]

@@ -1,12 +1,11 @@
-"use client";
+"use client"
 
-import React from "react";
-import MarketGrid from "@src/components/MarketGrid";
-import { MarketCardProps } from "@src/components/MarketCard";
-import sampleMarketsData from "@src/data/sampleMarkets.json";
+import type { MarketCardProps } from "@src/components/MarketCard"
+import MarketGrid from "@src/components/MarketGrid"
+import sampleMarketsData from "@src/data/sampleMarkets.json"
 
-const sampleMarkets: MarketCardProps[] = sampleMarketsData as MarketCardProps[];
+const sampleMarkets: MarketCardProps[] = sampleMarketsData as MarketCardProps[]
 
 export default function Home() {
-  return <MarketGrid markets={sampleMarkets} />;
+  return <MarketGrid markets={sampleMarkets} />
 }

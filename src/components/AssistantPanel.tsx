@@ -1,26 +1,27 @@
-"use client";
+"use client"
 
-import React, { useState, useRef, useEffect } from "react";
-import { Button, Typography, Avatar } from "antd";
 import {
-  SendOutlined,
-  RobotOutlined,
-  UserOutlined,
   CloseOutlined,
-} from "@ant-design/icons";
+  RobotOutlined,
+  SendOutlined,
+  UserOutlined,
+} from "@ant-design/icons"
+import { Avatar, Button, Typography } from "antd"
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
 
-const { Text } = Typography;
+const { Text } = Typography
 
 interface Message {
-  id: string;
-  text: string;
-  timestamp: Date;
-  isUser: boolean;
+  id: string
+  text: string
+  timestamp: Date
+  isUser: boolean
 }
 
 interface AssistantPanelProps {
-  className?: string;
-  onCollapse?: () => void; // ✅ new prop
+  className?: string
+  onCollapse?: () => void // ✅ new prop
 }
 
 const AssistantPanel: React.FC<AssistantPanelProps> = ({
@@ -34,20 +35,20 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
       timestamp: new Date(),
       isUser: false,
     },
-  ]);
-  const [inputValue, setInputValue] = useState("");
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  ])
+  const [inputValue, setInputValue] = useState("")
+  const messagesEndRef = useRef<HTMLDivElement | null>(null)
 
   const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) return
     const newMessage: Message = {
       id: Date.now().toString(),
       text: inputValue.trim(),
       timestamp: new Date(),
       isUser: true,
-    };
-    setMessages((prev) => [...prev, newMessage]);
-    setInputValue("");
+    }
+    setMessages((prev) => [...prev, newMessage])
+    setInputValue("")
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -57,20 +58,20 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
           timestamp: new Date(),
           isUser: false,
         },
-      ]);
-    }, 1000);
-  };
+      ])
+    }, 1000)
+  }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
+      e.preventDefault()
+      handleSendMessage()
     }
-  };
+  }
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [])
 
   return (
     <div
@@ -158,7 +159,7 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AssistantPanel;
+export default AssistantPanel

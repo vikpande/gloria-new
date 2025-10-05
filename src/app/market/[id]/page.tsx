@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import MarketDetailPage from "@src/components/MarketDetailPage";
-import sampleMarketsData from "@src/data/sampleMarkets.json";
+import MarketDetailPage from "@src/components/MarketDetailPage"
+import sampleMarketsData from "@src/data/sampleMarkets.json"
 
 export default function MarketDetail() {
   // Get Bitcoin market data (ID: "1")
-  const bitcoinMarket = sampleMarketsData.find((market) => market.id === "1");
+  const bitcoinMarket = sampleMarketsData.find((market) => market.id === "1")
 
   if (!bitcoinMarket) {
-    return <div>Market not found</div>;
+    return <div>Market not found</div>
   }
 
   return (
@@ -56,5 +56,5 @@ export default function MarketDetail() {
       ]}
       aiInsight={bitcoinMarket.aiInsight}
     />
-  );
+  )
 }

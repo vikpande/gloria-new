@@ -1,32 +1,33 @@
-"use client";
+"use client"
 
-import React, { useMemo, useState, useDeferredValue } from "react";
-import { SearchOutlined } from "@ant-design/icons";
-import MarketCard, { MarketCardProps } from "@src/components/MarketCard";
-import { getCategoryWithAll } from "@src/utils/categories";
+import { SearchOutlined } from "@ant-design/icons"
+import MarketCard, { type MarketCardProps } from "@src/components/MarketCard"
+import { getCategoryWithAll } from "@src/utils/categories"
+import type React from "react"
+import { useDeferredValue, useMemo, useState } from "react"
 
 interface MarketGridProps {
-  markets: MarketCardProps[];
-  className?: string;
+  markets: MarketCardProps[]
+  className?: string
 }
 
-const CATEGORIES = getCategoryWithAll().map((cat) => cat.value);
+const CATEGORIES = getCategoryWithAll().map((cat) => cat.value)
 
 const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
-  const [query, setQuery] = useState("");
-  const [activeTab, setActiveTab] = useState("all");
-  const deferredQuery = useDeferredValue(query);
+  const [query, setQuery] = useState("")
+  const [activeTab, setActiveTab] = useState("all")
+  const deferredQuery = useDeferredValue(query)
 
   const filtered = useMemo(() => {
-    const q = deferredQuery.trim().toLowerCase();
+    const q = deferredQuery.trim().toLowerCase()
     return markets.filter((m) => {
-      const inCat = activeTab === "all" || m.category === activeTab;
-      if (!q) return inCat;
-      const t = m.title.toLowerCase();
-      const d = (m.description ?? "").toLowerCase();
-      return inCat && (t.includes(q) || d.includes(q));
-    });
-  }, [markets, activeTab, deferredQuery]);
+      const inCat = activeTab === "all" || m.category === activeTab
+      if (!q) return inCat
+      const t = m.title.toLowerCase()
+      const d = (m.description ?? "").toLowerCase()
+      return inCat && (t.includes(q) || d.includes(q))
+    })
+  }, [markets, activeTab, deferredQuery])
 
   return (
     <div className={`w-full ${className}`}>
@@ -55,12 +56,14 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((cat) => (
             <button
+              type="button"
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-3 h-9 rounded-md text-sm font-medium transition ${activeTab === cat
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
+              className={`px-3 h-9 rounded-md text-sm font-medium transition ${
+                activeTab === cat
+                  ? "bg-black text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
             >
               {cat}
             </button>
@@ -92,7 +95,7 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MarketGrid;
+export default MarketGrid

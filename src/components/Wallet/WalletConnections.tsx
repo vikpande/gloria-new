@@ -157,7 +157,7 @@ const WalletConnections = () => {
                 onCopy={() => setCopyWalletAddress(MapsEnum.EVM_ETHEREUM)}
                 isCopied={copyWalletAddress === MapsEnum.EVM_ETHEREUM}
                 onDisconnect={() => signOut({ id: ChainType.EVM })}
-                onConnect={() => { }}
+                onConnect={() => {}}
                 key={connector}
                 index={i}
               />
@@ -176,7 +176,7 @@ const WalletConnections = () => {
                 onCopy={() => setCopyWalletAddress(MapsEnum.SOLANA_MAINNET)}
                 isCopied={copyWalletAddress === MapsEnum.SOLANA_MAINNET}
                 onDisconnect={() => signOut({ id: ChainType.Solana })}
-                onConnect={() => { }}
+                onConnect={() => {}}
                 key={connector}
                 index={i}
               />
@@ -209,7 +209,7 @@ const WalletConnections = () => {
                 onCopy={() => setCopyWalletAddress(MapsEnum.TON)}
                 isCopied={copyWalletAddress === MapsEnum.TON}
                 onDisconnect={() => signOut({ id: ChainType.Ton })}
-                onConnect={() => { }}
+                onConnect={() => {}}
                 key={connector}
                 index={i}
               />
@@ -228,7 +228,7 @@ const WalletConnections = () => {
                 onCopy={() => setCopyWalletAddress(MapsEnum.STELLAR_MAINNET)}
                 isCopied={copyWalletAddress === MapsEnum.STELLAR_MAINNET}
                 onDisconnect={() => signOut({ id: ChainType.Stellar })}
-                onConnect={() => { }}
+                onConnect={() => {}}
                 key={connector}
                 index={i}
               />
@@ -247,7 +247,7 @@ const WalletConnections = () => {
                 onCopy={() => setCopyWalletAddress(MapsEnum.TRON_MAINNET)}
                 isCopied={copyWalletAddress === MapsEnum.TRON_MAINNET}
                 onDisconnect={() => signOut({ id: ChainType.Tron })}
-                onConnect={() => { }}
+                onConnect={() => {}}
                 key={connector}
                 index={i}
               />

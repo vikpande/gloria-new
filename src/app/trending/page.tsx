@@ -1,13 +1,12 @@
-"use client";
+"use client"
 
-import React from "react";
-import TrendingGrid from "@src/components/TrendingGrid";
-import { MarketCardProps } from "@src/components/MarketCard";
-import trendingMarketsData from "@src/data/trendingMarkets.json";
+import type { MarketCardProps } from "@src/components/MarketCard"
+import TrendingGrid from "@src/components/TrendingGrid"
+import trendingMarketsData from "@src/data/trendingMarkets.json"
 
 const trendingSample: MarketCardProps[] =
-  trendingMarketsData as MarketCardProps[];
+  trendingMarketsData as MarketCardProps[]
 
 export default function TrendingPage() {
-  return <TrendingGrid markets={trendingSample} />;
+  return <TrendingGrid markets={trendingSample} />
 }

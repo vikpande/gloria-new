@@ -1,115 +1,116 @@
-"use client";
+"use client"
 
-import React, { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import {
-  Card,
-  Avatar,
-  Tag,
-  Button,
-  Typography,
-  Segmented,
-  InputNumber,
-  Divider,
-  Collapse,
-  List,
-  Tooltip,
-  Statistic,
-} from "antd";
-import {
-  ArrowUpOutlined,
   ArrowDownOutlined,
+  ArrowUpOutlined,
   CalendarOutlined,
+  CommentOutlined,
   InfoCircleOutlined,
   LineChartOutlined,
-  TeamOutlined,
-  CommentOutlined,
   RiseOutlined,
-} from "@ant-design/icons";
+  TeamOutlined,
+} from "@ant-design/icons"
 import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
+  Avatar,
+  Button,
+  Card,
+  Collapse,
+  Divider,
+  InputNumber,
+  List,
+  Segmented,
+  Statistic,
+  Tag,
+  Tooltip,
+  Typography,
+} from "antd"
+import { useRouter } from "next/navigation"
+import type React from "react"
+import { useMemo, useState } from "react"
+import {
   CartesianGrid,
+  Line,
+  LineChart,
+  Tooltip as RTooltip,
+  ResponsiveContainer,
   XAxis,
   YAxis,
-  Tooltip as RTooltip,
-} from "recharts";
+} from "recharts"
 
-const { Title, Text } = Typography;
-const { Panel } = Collapse;
+const { Title, Text } = Typography
+const { Panel } = Collapse
 
 /* ---------- Types ---------- */
-export type MarketSide = "Buy" | "Sell";
-export type Outcome = "Yes" | "No";
+export type MarketSide = "Buy" | "Sell"
+export type Outcome = "Yes" | "No"
 
 export interface HistoricalInsight {
-  label: string;
-  value: string;
-  note: string;
-  conf: string;
+  label: string
+  value: string
+  note: string
+  conf: string
 }
 
 export interface ExpertInsight {
-  source: string;
-  stance: string;
-  weight: number;
-  take: string;
+  source: string
+  stance: string
+  weight: number
+  take: string
 }
 
 export interface NewsInsight {
-  title: string;
-  sentiment: string;
-  impact: string;
-  time: string;
+  title: string
+  sentiment: string
+  impact: string
+  time: string
 }
 
 export interface AIInsightsData {
   summary: {
-    modelProb: number;
-    deltaPct: number;
-  };
-  historical: HistoricalInsight[];
-  experts: ExpertInsight[];
-  news: NewsInsight[];
+    modelProb: number
+    deltaPct: number
+  }
+  historical: HistoricalInsight[]
+  experts: ExpertInsight[]
+  news: NewsInsight[]
 }
 
 export interface AIInsight {
-  summary: string;
-  keyFactors: string[];
-  riskFactors: string[];
-  confidence: number;
+  summary: string
+  keyFactors: string[]
+  riskFactors: string[]
+  confidence: number
 }
 
 export interface MarketDetailProps {
-  title: string;
-  category: string;
-  imageUrl?: string;
-  chancePct: number; // 0-100
-  changePct?: number; // +/- since period
-  volumeUSD: number; // total volume
-  lastUpdated?: string; // e.g. "Sep 27, 2025"
-  yesPrice: number; // 0-1 e.g. 0.73
-  noPrice: number; // 0-1 e.g. 0.27
-  chart: Array<{ t: string; p: number }>;
+  title: string
+  category: string
+  imageUrl?: string
+  chancePct: number // 0-100
+  changePct?: number // +/- since period
+  volumeUSD: number // total volume
+  lastUpdated?: string // e.g. "Sep 27, 2025"
+  yesPrice: number // 0-1 e.g. 0.73
+  noPrice: number // 0-1 e.g. 0.27
+  chart: Array<{ t: string; p: number }>
   orderBook?: {
-    bids: Array<{ price: number; size: number }>;
-    asks: Array<{ price: number; size: number }>;
-  };
-  context?: string;
-  tags?: string[];
+    bids: Array<{ price: number; size: number }>
+    asks: Array<{ price: number; size: number }>
+  }
+  context?: string
+  tags?: string[]
   related?: Array<{
-    id: string;
-    title: string;
-    chance: number;
-    imageUrl?: string;
-  }>;
-  aiInsight?: AIInsight;
+    id: string
+    title: string
+    chance: number
+    imageUrl?: string
+  }>
+  aiInsight?: AIInsight
 }
 
-import aiInsightsData from "@src/data/aiInsights.json";
+import aiInsightsData from "@src/data/aiInsights.json"
 
-const aiInsights = aiInsightsData;
+const aiInsights = aiInsightsData
 
 /* ---------- Helper ---------- */
 const formatUSD = (v: number) =>
@@ -117,7 +118,7 @@ const formatUSD = (v: number) =>
     ? `$${(v / 1_000_000).toFixed(1)}M`
     : v >= 1_000
       ? `$${(v / 1_000).toFixed(1)}K`
-      : `$${v.toFixed(0)}`;
+      : `$${v.toFixed(0)}`
 
 /* ---------- Component ---------- */
 const MarketDetailPage: React.FC<MarketDetailProps> = ({
@@ -135,26 +136,26 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
   tags = [],
   related = [],
 }) => {
-  const router = useRouter();
-  const [side, setSide] = useState<MarketSide>("Buy");
-  const [outcome, setOutcome] = useState<Outcome>("Yes");
-  const [amount, setAmount] = useState<number>(0);
+  const router = useRouter()
+  const [side, setSide] = useState<MarketSide>("Buy")
+  const [outcome, setOutcome] = useState<Outcome>("Yes")
+  const [amount, setAmount] = useState<number>(0)
 
-  const activePrice = outcome === "Yes" ? yesPrice : noPrice; // 0..1
-  const priceLabel = `${outcome} ${(activePrice * 100).toFixed(0)}¢`;
-  const isUp = changePct >= 0;
+  const activePrice = outcome === "Yes" ? yesPrice : noPrice // 0..1
+  const priceLabel = `${outcome} ${(activePrice * 100).toFixed(0)}¢`
+  const isUp = changePct >= 0
 
-  const timeButtons = ["1H", "6H", "1D", "1W", "1M", "ALL"];
-  const [timeIdx, setTimeIdx] = useState(timeButtons.length - 1);
+  const timeButtons = ["1H", "6H", "1D", "1W", "1M", "ALL"]
+  const [timeIdx, setTimeIdx] = useState(timeButtons.length - 1)
 
-  const chartData = useMemo(() => chart, [chart]);
+  const chartData = useMemo(() => chart, [chart])
 
   const maxBidSize = orderBook
     ? Math.max(1, ...orderBook.bids.map((b) => b.size))
-    : 1;
+    : 1
   const maxAskSize = orderBook
     ? Math.max(1, ...orderBook.asks.map((a) => a.size))
-    : 1;
+    : 1
 
   return (
     <div className="w-full">
@@ -227,12 +228,14 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
               <div className="flex items-center gap-2">
                 {timeButtons.map((t, i) => (
                   <button
+                    type="button"
                     key={t}
                     onClick={() => setTimeIdx(i)}
-                    className={`h-8 px-3 rounded-md text-sm ${timeIdx === i
-                      ? "bg-black text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                      }`}
+                    className={`h-8 px-3 rounded-md text-sm ${
+                      timeIdx === i
+                        ? "bg-black text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
                   >
                     {t}
                   </button>
@@ -309,10 +312,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                           const w = Math.max(
                             6,
                             Math.round((b.size / maxBidSize) * 100)
-                          ); // min 6% for visibility
+                          ) // min 6% for visibility
                           return (
                             <div
-                              key={`bid-${idx}`}
+                              key={`bid-${b.price}-${b.size}-${idx}`}
                               className="relative overflow-hidden rounded-md"
                             >
                               <div
@@ -328,7 +331,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                                 </span>
                               </div>
                             </div>
-                          );
+                          )
                         })}
                       </div>
                     </Card>
@@ -351,10 +354,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                           const w = Math.max(
                             6,
                             Math.round((a.size / maxAskSize) * 100)
-                          );
+                          )
                           return (
                             <div
-                              key={`ask-${idx}`}
+                              key={`ask-${a.price}-${a.size}-${idx}`}
                               className="relative overflow-hidden rounded-md"
                             >
                               <div
@@ -370,7 +373,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                                 </span>
                               </div>
                             </div>
-                          );
+                          )
                         })}
                       </div>
                     </Card>
@@ -400,10 +403,11 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </span>
                   </div>
                   <div
-                    className={`text-sm inline-flex items-center gap-1 ${aiInsights.summary.deltaPct >= 0
-                      ? "text-green-600"
-                      : "text-red-600"
-                      }`}
+                    className={`text-sm inline-flex items-center gap-1 ${
+                      aiInsights.summary.deltaPct >= 0
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
                   >
                     <RiseOutlined />
                     {aiInsights.summary.deltaPct >= 0 ? "+" : ""}
@@ -428,7 +432,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     <ul className="space-y-2">
                       {aiInsights.historical.map(
                         (h: HistoricalInsight, i: number) => (
-                          <li key={i} className="text-sm">
+                          <li
+                            key={`historical-${h.label}-${i}`}
+                            className="text-sm"
+                          >
                             <div className="flex items-center justify-between">
                               <span className="text-gray-600">{h.label}</span>
                               <span className="font-medium text-gray-900">
@@ -459,18 +466,19 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </div>
                     <ul className="space-y-3">
                       {aiInsights.experts.map((e: ExpertInsight, i: number) => (
-                        <li key={i} className="text-sm">
+                        <li key={`expert-${e.name}-${i}`} className="text-sm">
                           <div className="flex items-center justify-between">
                             <span className="font-medium text-gray-900">
                               {e.source}
                             </span>
                             <Tag
-                              className={`border-0 rounded-md ${e.stance === "Bullish"
-                                ? "bg-green-100 text-green-800"
-                                : e.stance === "Bearish"
-                                  ? "bg-red-100 text-red-800"
-                                  : "bg-gray-100 text-gray-700"
-                                }`}
+                              className={`border-0 rounded-md ${
+                                e.stance === "Bullish"
+                                  ? "bg-green-100 text-green-800"
+                                  : e.stance === "Bearish"
+                                    ? "bg-red-100 text-red-800"
+                                    : "bg-gray-100 text-gray-700"
+                              }`}
                             >
                               {e.stance}
                             </Tag>
@@ -498,7 +506,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </div>
                     <ul className="space-y-3">
                       {aiInsights.news.map((n: NewsInsight, i: number) => (
-                        <li key={i} className="text-sm">
+                        <li key={`news-${n.title}-${i}`} className="text-sm">
                           <div className="flex items-center justify-between">
                             <span className="text-gray-900">{n.title}</span>
                             <span className="text-xs text-gray-500">
@@ -507,12 +515,13 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                           </div>
                           <div className="mt-1 flex items-center justify-between">
                             <Tag
-                              className={`border-0 rounded-md ${n.sentiment === "Positive"
-                                ? "bg-green-100 text-green-800"
-                                : n.sentiment === "Negative"
-                                  ? "bg-red-100 text-red-800"
-                                  : "bg-gray-100 text-gray-700"
-                                }`}
+                              className={`border-0 rounded-md ${
+                                n.sentiment === "Positive"
+                                  ? "bg-green-100 text-green-800"
+                                  : n.sentiment === "Negative"
+                                    ? "bg-red-100 text-red-800"
+                                    : "bg-gray-100 text-gray-700"
+                              }`}
                             >
                               {n.sentiment}
                             </Tag>
@@ -615,14 +624,19 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                 type="primary"
                 className="w-full h-10 bg-black hover:bg-gray-900"
                 disabled={!amount}
-                onClick={() => { router.push("/account") }}
+                onClick={() => {
+                  router.push("/account")
+                }}
               >
                 {side === "Buy" ? "Trade" : "Place Sell Order"}
               </Button>
 
               <div className="mt-2 text-xs text-gray-500">
                 By trading, you agree to the{" "}
-                <a className="underline hover:text-gray-700" href="#">
+                <a
+                  className="underline hover:text-gray-700"
+                  href="/terms-of-service"
+                >
                   Terms of Use
                 </a>
                 .
@@ -690,7 +704,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MarketDetailPage;
+export default MarketDetailPage

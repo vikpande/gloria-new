@@ -1,4 +1,9 @@
-import { Eye, Gift, PaperPlaneRight, Plus, UserCircleIcon } from "@phosphor-icons/react"
+import {
+  Eye,
+  PaperPlaneRight,
+  Plus,
+  UserCircleIcon,
+} from "@phosphor-icons/react"
 import { Button, Skeleton } from "@radix-ui/themes"
 import { useState } from "react"
 import { AuthGate } from "../../../components/AuthGate"

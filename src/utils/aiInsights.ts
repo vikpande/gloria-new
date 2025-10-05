@@ -1,27 +1,27 @@
-import aiInsightsData from "@/data/aiInsights.json";
-import { AIInsightsData } from "@/components/MarketDetailPage";
+import type { AIInsightsData } from "@/components/MarketDetailPage"
+import aiInsightsData from "@/data/aiInsights.json"
 
-const insights: AIInsightsData = aiInsightsData as AIInsightsData;
+const insights: AIInsightsData = aiInsightsData as AIInsightsData
 
 export const getAIInsights = (): AIInsightsData => {
-    return insights;
-};
+  return insights
+}
 
 export const getAIInsightSummary = () => {
-    return insights.summary;
-};
+  return insights.summary
+}
 
 export const getAIInsightHistorical = () => {
-    return insights.historical;
-};
+  return insights.historical
+}
 
 export const getAIInsightExperts = () => {
-    return insights.experts;
-};
+  return insights.experts
+}
 
 export const getAIInsightNews = () => {
-    return insights.news;
-};
+  return insights.news
+}
 
 // Default export for backward compatibility
-export default insights;
+export default insights

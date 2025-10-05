@@ -1,81 +1,82 @@
-"use client";
+"use client"
 
-import React, { useMemo, useState } from "react";
-import { Segmented } from "antd";
-import { FireOutlined } from "@ant-design/icons";
-import MarketCard, { MarketCardProps } from "@src/components/MarketCard";
+import { FireOutlined } from "@ant-design/icons"
+import MarketCard, { type MarketCardProps } from "@src/components/MarketCard"
+import { Segmented } from "antd"
+import type React from "react"
+import { useMemo, useState } from "react"
 
-type SortKey = "gainers" | "volume" | "ending";
-type WindowKey = "24h" | "7d";
+type SortKey = "gainers" | "volume" | "ending"
+type WindowKey = "24h" | "7d"
 
 // Extended interface for trending markets that includes all possible properties
 interface TrendingMarket extends MarketCardProps {
-  volumeUSD?: number;
-  probabilityPct?: number;
-  dateISO?: string;
+  volumeUSD?: number
+  probabilityPct?: number
+  dateISO?: string
 }
 
 // If your MarketCard uses date like "31/12/2024", this parses it safely.
 function parseDMY(d: string | undefined) {
-  if (!d) return Number.POSITIVE_INFINITY;
+  if (!d) return Number.POSITIVE_INFINITY
   // supports "DD/MM/YYYY" and "YYYY-MM-DD"
   if (/^\d{2}\/\d{2}\/\d{4}$/.test(d)) {
-    const [dd, mm, yy] = d.split("/").map(Number);
-    return new Date(yy, mm - 1, dd).getTime();
+    const [dd, mm, yy] = d.split("/").map(Number)
+    return new Date(yy, mm - 1, dd).getTime()
   }
-  const t = new Date(d as string).getTime();
-  return Number.isNaN(t) ? Number.POSITIVE_INFINITY : t;
+  const t = new Date(d as string).getTime()
+  return Number.isNaN(t) ? Number.POSITIVE_INFINITY : t
 }
 
 interface TrendingGridProps {
-  markets: TrendingMarket[];
-  className?: string;
+  markets: TrendingMarket[]
+  className?: string
 }
 
 const TrendingGrid: React.FC<TrendingGridProps> = ({
   markets,
   className = "",
 }) => {
-  const [sortBy, setSortBy] = useState<SortKey>("gainers");
-  const [win, setWin] = useState<WindowKey>("24h");
+  const [sortBy, setSortBy] = useState<SortKey>("gainers")
+  const [win, setWin] = useState<WindowKey>("24h")
 
   // Basic “trending” signal:
   // - Up-trending OR high probability OR high volume
   const trendingPool = useMemo(() => {
     return markets.filter((m) => {
-      const v = m.volume ?? m.volumeUSD ?? 0;
-      const p = m.probability ?? m.probabilityPct ?? 0;
-      const up = m.trend === "up";
-      return up || p >= 60 || v >= 1_000_000;
-    });
-  }, [markets]);
+      const v = m.volume ?? m.volumeUSD ?? 0
+      const p = m.probability ?? m.probabilityPct ?? 0
+      const up = m.trend === "up"
+      return up || p >= 60 || v >= 1_000_000
+    })
+  }, [markets])
 
   const sorted = useMemo(() => {
-    const list = [...trendingPool];
+    const list = [...trendingPool]
     switch (sortBy) {
       case "volume": {
         return list.sort((a, b) => {
-          const av = a.volume ?? a.volumeUSD ?? 0;
-          const bv = b.volume ?? b.volumeUSD ?? 0;
-          return bv - av;
-        });
+          const av = a.volume ?? a.volumeUSD ?? 0
+          const bv = b.volume ?? b.volumeUSD ?? 0
+          return bv - av
+        })
       }
       case "ending": {
         return list.sort(
           (a, b) =>
             parseDMY(a.date ?? a.dateISO) - parseDMY(b.date ?? b.dateISO)
-        );
+        )
       }
       default: // "gainers"
         return list.sort((a, b) => {
-          const ap = a.probability ?? a.probabilityPct ?? 0;
-          const bp = b.probability ?? b.probabilityPct ?? 0;
-          const at = a.trend === "up" ? 1 : 0;
-          const bt = b.trend === "up" ? 1 : 0;
-          return bt - at || bp - ap;
-        });
+          const ap = a.probability ?? a.probabilityPct ?? 0
+          const bp = b.probability ?? b.probabilityPct ?? 0
+          const at = a.trend === "up" ? 1 : 0
+          const bt = b.trend === "up" ? 1 : 0
+          return bt - at || bp - ap
+        })
     }
-  }, [trendingPool, sortBy]);
+  }, [trendingPool, sortBy])
 
   return (
     <div className={`w-full ${className}`}>
@@ -133,7 +134,7 @@ const TrendingGrid: React.FC<TrendingGridProps> = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TrendingGrid;
+export default TrendingGrid

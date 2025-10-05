@@ -1,62 +1,38 @@
-"use client";
+"use client"
 
-import React, { useMemo, useState } from "react";
-import Link from "next/link";
-import {
-  Layout,
-  Menu,
-  Avatar,
-  Button,
-  Badge,
-  Dropdown,
-  Drawer,
-  Typography,
-  Tooltip,
-} from "antd";
-import type { MenuProps } from "antd";
-import {
-  BellOutlined,
-  SettingOutlined,
-  UserOutlined,
-  WalletOutlined,
-  MenuOutlined,
-  RobotOutlined,
-} from "@ant-design/icons";
-import AddTurboChainButton from "@src/components/AddTurboChainButton"
-import { FeatureFlagsContext } from "@src/providers/FeatureFlagsProvider"
+import { MenuOutlined, RobotOutlined } from "@ant-design/icons"
+import { Button, Drawer, Layout, Menu, Tooltip } from "antd"
+import type { MenuProps } from "antd"
 import dynamic from "next/dynamic"
+import Link from "next/link"
+import type React from "react"
+import { useMemo, useState } from "react"
 
 const ConnectWallet = dynamic(() => import("@src/components/Wallet"), {
   ssr: false,
   loading: () => (
-    <Button className="bg-black hover:bg-gray-900">
-      Sign in
-    </Button>
+    <Button className="bg-black hover:bg-gray-900">Sign in</Button>
   ),
 })
 
-
-const { Header: AntHeader } = Layout;
-const { Text } = Typography;
+const { Header: AntHeader } = Layout
 
 interface HeaderProps {
-  balance?: number;
-  user?: { name: string; avatar?: string };
-  activeMenuKey?: string;
-  onMenuClick?: (key: string) => void;
-  onHideAssistant?: () => void;
-  isAssistantVisible?: boolean;
+  balance?: number
+  user?: { name: string; avatar?: string }
+  activeMenuKey?: string
+  onMenuClick?: (key: string) => void
+  onHideAssistant?: () => void
+  isAssistantVisible?: boolean
 }
 
 const GloriaHeader: React.FC<HeaderProps> = ({
-  balance = 1000.0,
   activeMenuKey = "markets",
   onMenuClick,
   onHideAssistant,
   isAssistantVisible = true,
 }) => {
-
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   const items: MenuProps["items"] = useMemo(
     () => [
@@ -65,28 +41,27 @@ const GloriaHeader: React.FC<HeaderProps> = ({
       { key: "news", label: "Breaking" },
     ],
     []
-  );
+  )
 
   const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
-    onMenuClick?.(key);
-    setDrawerOpen(false);
-  };
+    onMenuClick?.(key)
+    setDrawerOpen(false)
+  }
 
-  const userMenuItems = [
+  const _userMenuItems = [
     { key: "profile", label: "Profile" },
     { key: "settings", label: "Settings" },
     { key: "logout", label: "Logout" },
-  ];
+  ]
 
-  const handleUserMenuClick: MenuProps["onClick"] = ({ key }) => {
+  const _handleUserMenuClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "profile") {
-      onMenuClick?.("profile");
+      onMenuClick?.("profile")
     } else if (key === "settings") {
-      onMenuClick?.("settings");
+      onMenuClick?.("settings")
     } else if (key === "logout") {
-
     }
-  };
+  }
 
   return (
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
@@ -94,6 +69,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
         {/* LEFT: Brand + Mobile Menu Button */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <button
+            type="button"
             className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 lg:hidden"
             onClick={() => setDrawerOpen(true)}
             aria-label="Open navigation"
@@ -134,8 +110,9 @@ const GloriaHeader: React.FC<HeaderProps> = ({
               <Button
                 type="text"
                 icon={<RobotOutlined />}
-                className={`${isAssistantVisible ? "text-black" : "text-gray-400"
-                  } hover:!text-black`}
+                className={`${
+                  isAssistantVisible ? "text-black" : "text-gray-400"
+                } hover:!text-black`}
                 onClick={onHideAssistant}
               />
             </Tooltip>
@@ -158,7 +135,6 @@ const GloriaHeader: React.FC<HeaderProps> = ({
         placement="left"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-
       >
         <Menu
           mode="inline"
@@ -169,7 +145,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
         />
       </Drawer>
     </div>
-  );
-};
+  )
+}
 
-export default GloriaHeader;
+export default GloriaHeader

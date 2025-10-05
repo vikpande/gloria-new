@@ -1,4 +1,3 @@
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import type { Metadata, Viewport } from "next"
@@ -28,7 +27,7 @@ import {
   HELPSCOUT_BEACON_ID,
   VERCEL_PROJECT_PRODUCTION_URL,
 } from "@src/utils/environment"
-import "./gloria.scss";
+import "./gloria.scss"
 
 export const viewport: Viewport = {
   width: "device-width",

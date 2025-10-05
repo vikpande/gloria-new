@@ -1,4 +1,3 @@
-import Layout from "@src/components/Layout"
 import GloriaLayout from "@src/components/Layout/Gloria"
 import { PreloadFeatureFlags } from "@src/components/PreloadFeatureFlags"
 import { settings } from "@src/config/settings"

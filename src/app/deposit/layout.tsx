@@ -2,11 +2,10 @@ import type { Metadata } from "next"
 import type React from "react"
 import type { PropsWithChildren } from "react"
 
-import Layout from "@src/components/Layout"
+import GloriaLayout from "@src/components/Layout/Gloria"
 import { PreloadFeatureFlags } from "@src/components/PreloadFeatureFlags"
 import { whitelabelTemplateFlag } from "@src/config/featureFlags"
 import { settings } from "@src/config/settings"
-import GloriaLayout from "@src/components/Layout/Gloria"
 
 export async function generateMetadata(): Promise<Metadata> {
   const templ = await whitelabelTemplateFlag()

@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import React from "react";
-import { Card, Input, Button, Avatar, List, Tag } from "antd";
 import {
-  ArrowUpOutlined,
   ArrowDownOutlined,
-  RightOutlined,
+  ArrowUpOutlined,
   MailOutlined,
+  RightOutlined,
   ThunderboltOutlined,
-} from "@ant-design/icons";
+} from "@ant-design/icons"
+import { Avatar, Button, Card, Input, List, Tag } from "antd"
+import type React from "react"
 
 /* ---------------- Sparkline (no extra libs) ---------------- */
 function Sparkline({
@@ -16,46 +16,47 @@ function Sparkline({
   trend = "up",
   className = "",
 }: {
-  points: number[]; // values 0..100
-  trend?: "up" | "down";
-  className?: string;
+  points: number[] // values 0..100
+  trend?: "up" | "down"
+  className?: string
 }) {
-  if (!points.length) return null;
-  const w = 120,
-    h = 30;
-  const max = Math.max(...points),
-    min = Math.min(...points);
-  const norm = (v: number) => h - ((v - min) / (max - min || 1)) * h;
+  if (!points.length) return null
+  const w = 120
+  const h = 30
+  const max = Math.max(...points)
+  const min = Math.min(...points)
+  const norm = (v: number) => h - ((v - min) / (max - min || 1)) * h
 
-  const step = w / (points.length - 1 || 1);
+  const step = w / (points.length - 1 || 1)
   const d = points
     .map((v, i) => `${i === 0 ? "M" : "L"} ${i * step},${norm(v)}`)
-    .join(" ");
+    .join(" ")
 
-  const stroke = trend === "up" ? "#16a34a" : "#ef4444";
+  const stroke = trend === "up" ? "#16a34a" : "#ef4444"
 
   return (
     <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className={className}>
+      <title>Price trend chart</title>
       <path d={d} fill="none" stroke={stroke} strokeWidth={2} />
     </svg>
-  );
+  )
 }
 
 /* ---------------- Row item ---------------- */
 type Row = {
-  id: string;
-  rank: number;
-  icon?: string;
-  title: string;
-  percent: number; // 0..100
-  changePct: number; // +/- delta
-  trend: "up" | "down";
-  spark: number[];
-  tag?: string;
-};
+  id: string
+  rank: number
+  icon?: string
+  title: string
+  percent: number // 0..100
+  changePct: number // +/- delta
+  trend: "up" | "down"
+  spark: number[]
+  tag?: string
+}
 
 function NewsRow({ item }: { item: Row }) {
-  const TrendIcon = item.trend === "up" ? ArrowUpOutlined : ArrowDownOutlined;
+  const TrendIcon = item.trend === "up" ? ArrowUpOutlined : ArrowDownOutlined
   return (
     <div className="w-full">
       <div className="flex items-center gap-4 py-4">
@@ -105,7 +106,7 @@ function NewsRow({ item }: { item: Row }) {
       </div>
       <div className="h-px bg-gray-200" />
     </div>
-  );
+  )
 }
 
 /* ---------------- Sample data ---------------- */
@@ -160,7 +161,7 @@ const ITEMS: Row[] = [
     spark: [20, 18, 16, 14, 10, 8, 3, 0],
     tag: "Tech",
   },
-];
+]
 
 const LIVE = [
   {
@@ -183,7 +184,7 @@ const LIVE = [
     title: "DoD planning strikes on Venezuelan drug cartels.",
     time: "Sep 27, 4:07 AM",
   },
-];
+]
 
 /* ---------------- Page ---------------- */
 const NewsPage: React.FC = () => {
@@ -289,7 +290,7 @@ const NewsPage: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewsPage;
+export default NewsPage

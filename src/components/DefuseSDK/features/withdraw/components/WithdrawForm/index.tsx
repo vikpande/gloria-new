@@ -188,9 +188,9 @@ export const WithdrawForm = ({
       return bridgedTokenInfo == null
         ? null
         : {
-          amount: bridgedTokenInfo.minWithdrawal,
-          decimals: tokenOut.decimals,
-        }
+            amount: bridgedTokenInfo.minWithdrawal,
+            decimals: tokenOut.decimals,
+          }
     }
   )
   const minWithdrawalHyperliquidAmount = getMinWithdrawalHyperliquidAmount(
@@ -246,7 +246,7 @@ export const WithdrawForm = ({
             amount: parseUnits(amount, decimals),
             decimals: decimals,
           }
-        } catch { }
+        } catch {}
 
         actorRef.send({
           type: "WITHDRAW_FORM.UPDATE_AMOUNT",
@@ -304,20 +304,20 @@ export const WithdrawForm = ({
   )
   const receivedAmountUsd = totalAmountReceived?.amount
     ? getTokenUsdPrice(
-      formatTokenValue(
-        totalAmountReceived.amount,
-        totalAmountReceived.decimals
-      ),
-      tokenOut,
-      tokensUsdPriceData
-    )
+        formatTokenValue(
+          totalAmountReceived.amount,
+          totalAmountReceived.decimals
+        ),
+        tokenOut,
+        tokensUsdPriceData
+      )
     : null
   const feeUsd = withdtrawalFee
     ? getTokenUsdPrice(
-      formatTokenValue(withdtrawalFee.amount, withdtrawalFee.decimals),
-      tokenOut,
-      tokensUsdPriceData
-    )
+        formatTokenValue(withdtrawalFee.amount, withdtrawalFee.decimals),
+        tokenOut,
+        tokensUsdPriceData
+      )
     : null
 
   const increaseAmount = (tokenValue: TokenValue) => {
@@ -365,7 +365,7 @@ export const WithdrawForm = ({
       }
       try {
         parsedAmount.amount = parseUnits(amountIn, parsedAmount.decimals)
-      } catch { }
+      } catch {}
       actorRef.send({
         type: "WITHDRAW_FORM.UPDATE_TOKEN",
         params: {
@@ -409,23 +409,23 @@ export const WithdrawForm = ({
             min={
               minWithdrawalAmount != null
                 ? {
-                  value: formatTokenValue(
-                    minWithdrawalAmount.amount,
-                    minWithdrawalAmount.decimals
-                  ),
-                  message: "Amount is too low",
-                }
+                    value: formatTokenValue(
+                      minWithdrawalAmount.amount,
+                      minWithdrawalAmount.decimals
+                    ),
+                    message: "Amount is too low",
+                  }
                 : undefined
             }
             max={
               tokenInBalance != null
                 ? {
-                  value: formatTokenValue(
-                    tokenInBalance.amount,
-                    tokenInBalance.decimals
-                  ),
-                  message: "Insufficient balance",
-                }
+                    value: formatTokenValue(
+                      tokenInBalance.amount,
+                      tokenInBalance.decimals
+                    ),
+                    message: "Insufficient balance",
+                  }
                 : undefined
             }
             errors={errors}

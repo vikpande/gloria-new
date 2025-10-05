@@ -1,45 +1,46 @@
-"use client";
+"use client"
 
-import React, { useMemo, useState } from "react";
 import {
-  Card,
-  Avatar,
-  Tag,
-  Button,
-  Form,
-  Input,
-  Typography,
-  Divider,
-  Space,
-  Progress,
-  List,
-  Statistic,
-  message,
-} from "antd";
-import {
-  UserOutlined,
-  EditOutlined,
-  CalendarOutlined,
-  DollarCircleOutlined,
   AimOutlined,
   BarChartOutlined,
+  CalendarOutlined,
+  DollarCircleOutlined,
+  EditOutlined,
   GiftOutlined,
-} from "@ant-design/icons";
-import { getCategoryNames } from "@src/utils/categories";
+  UserOutlined,
+} from "@ant-design/icons"
+import { getCategoryNames } from "@src/utils/categories"
+import {
+  Avatar,
+  Button,
+  Card,
+  Divider,
+  Form,
+  Input,
+  List,
+  Progress,
+  Space,
+  Statistic,
+  Tag,
+  Typography,
+  message,
+} from "antd"
+import type React from "react"
+import { useMemo, useState } from "react"
 
-const { Title, Text } = Typography;
-const { CheckableTag } = Tag;
+const { Title, Text } = Typography
+const { CheckableTag } = Tag
 
-const ALL_CATEGORIES = getCategoryNames();
+const ALL_CATEGORIES = getCategoryNames()
 
 const LEVELS = [
   { key: "Beginner", min: 0, max: 999 },
   { key: "Pro", min: 1000, max: 4999 },
-  { key: "Expert", min: 5000, max: Infinity },
-];
+  { key: "Expert", min: 5000, max: Number.POSITIVE_INFINITY },
+]
 
 const ProfilePage: React.FC = () => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   // mock data (replace with real)
   const user = {
@@ -58,36 +59,40 @@ const ProfilePage: React.FC = () => {
       },
       { title: "New position in BTC $100k", date: "Aug 18, 2024", gain: -25.0 },
     ],
-  };
+  }
 
   // Rewards & Levels
-  const [rewardPoints, setRewardPoints] = useState<number>(1840); // ← from API
+  const [rewardPoints, setRewardPoints] = useState<number>(1840) // ← from API
   const levelInfo = useMemo(() => {
     const lvl = LEVELS.find(
       (l) => rewardPoints >= l.min && rewardPoints <= l.max
-    )!;
-    const nextMax = lvl.max === Infinity ? rewardPoints : lvl.max;
-    const denom = nextMax - lvl.min || 1;
+    )
+    if (!lvl) return { current: "Beginner", progressPct: 0, toNext: 1000 }
+    const nextMax =
+      lvl.max === Number.POSITIVE_INFINITY ? rewardPoints : lvl.max
+    const denom = nextMax - lvl.min || 1
     const pct =
-      lvl.max === Infinity
+      lvl.max === Number.POSITIVE_INFINITY
         ? 100
-        : Math.min(100, Math.round(((rewardPoints - lvl.min) / denom) * 100));
+        : Math.min(100, Math.round(((rewardPoints - lvl.min) / denom) * 100))
     const toNext =
-      lvl.max === Infinity ? 0 : Math.max(0, lvl.max + 1 - rewardPoints);
-    return { current: lvl.key, progressPct: pct, toNext };
-  }, [rewardPoints]);
+      lvl.max === Number.POSITIVE_INFINITY
+        ? 0
+        : Math.max(0, lvl.max + 1 - rewardPoints)
+    return { current: lvl.key, progressPct: pct, toNext }
+  }, [rewardPoints])
 
   // Personal preferences
   const [selectedCats, setSelectedCats] = useState<string[]>([
     "Crypto",
     "Technology",
     "AI",
-  ]);
+  ])
   const toggleCat = (cat: string, checked: boolean) =>
     setSelectedCats((prev) =>
       checked ? [...prev, cat] : prev.filter((c) => c !== cat)
-    );
-  const savePreferences = () => message.success("Preferences saved");
+    )
+  const savePreferences = () => message.success("Preferences saved")
 
   return (
     <div className="w-full">
@@ -325,10 +330,11 @@ const ProfilePage: React.FC = () => {
             {LEVELS.map((l) => (
               <Tag
                 key={l.key}
-                className={`border-0 ${levelInfo.current === l.key
-                  ? "bg-black text-white"
-                  : "bg-gray-100 text-gray-700"
-                  }`}
+                className={`border-0 ${
+                  levelInfo.current === l.key
+                    ? "bg-black text-white"
+                    : "bg-gray-100 text-gray-700"
+                }`}
               >
                 {l.key}
               </Tag>
@@ -409,7 +415,7 @@ const ProfilePage: React.FC = () => {
         </Card>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default ProfilePage

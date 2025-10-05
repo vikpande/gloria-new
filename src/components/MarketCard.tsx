@@ -1,35 +1,35 @@
-"use client";
+"use client"
 
-import React from "react";
-import Link from "next/link";
-import { Card, Button, Tag, Typography, Divider, Tooltip } from "antd";
 import {
-  CaretUpOutlined,
-  CaretDownOutlined,
   CalendarOutlined,
-} from "@ant-design/icons";
+  CaretDownOutlined,
+  CaretUpOutlined,
+} from "@ant-design/icons"
+import { Button, Card, Divider, Tag, Tooltip, Typography } from "antd"
+import Link from "next/link"
+import type React from "react"
 
-const { Text, Title } = Typography;
+const { Text, Title } = Typography
 
-export type Trend = "up" | "down" | "neutral";
+export type Trend = "up" | "down" | "neutral"
 
 export interface MarketCardProps {
-  id: string;
-  title: string;
-  description?: string;
-  category: string;
-  date: string; // keep consistent with page.tsx
-  yesPrice: number; // 0.73
-  noPrice: number; // 0.27
-  volume: number; // 2100000
-  probability: number; // 73
-  trend?: Trend;
-  isFavorite?: boolean;
-  disabled?: boolean;
-  className?: string;
-  onYes?: (id: string) => void;
-  onNo?: (id: string) => void;
-  onToggleFavorite?: (id: string, next: boolean) => void;
+  id: string
+  title: string
+  description?: string
+  category: string
+  date: string // keep consistent with page.tsx
+  yesPrice: number // 0.73
+  noPrice: number // 0.27
+  volume: number // 2100000
+  probability: number // 73
+  trend?: Trend
+  isFavorite?: boolean
+  disabled?: boolean
+  className?: string
+  onYes?: (id: string) => void
+  onNo?: (id: string) => void
+  onToggleFavorite?: (id: string, next: boolean) => void
 }
 
 const MarketCard: React.FC<MarketCardProps> = ({
@@ -53,12 +53,11 @@ const MarketCard: React.FC<MarketCardProps> = ({
     day: "2-digit",
     month: "short",
     year: "numeric",
-  });
+  })
 
   return (
     <Card
       tabIndex={0}
-      role="group"
       aria-label={`${title} market`}
       className={`border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition bg-white ${className}`}
       bodyStyle={{ padding: 16 }}
@@ -74,7 +73,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
           {trend === "down" && <CaretDownOutlined className="text-red-500" />}
           <Tooltip
             title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-          ></Tooltip>
+          />
         </div>
       </div>
 
@@ -128,7 +127,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
         <span>{probability}% Chance</span>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default MarketCard;
+export default MarketCard

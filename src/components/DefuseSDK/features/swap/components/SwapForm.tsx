@@ -141,7 +141,7 @@ export const SwapForm = ({ isLoggedIn, renderHostAppLink }: SwapFormProps) => {
     if (
       currentModalType !== null ||
       (payload as ModalSelectAssetsPayload)?.modalType !==
-      ModalType.MODAL_SELECT_ASSETS
+        ModalType.MODAL_SELECT_ASSETS
     ) {
       return
     }
@@ -204,9 +204,9 @@ export const SwapForm = ({ isLoggedIn, renderHostAppLink }: SwapFormProps) => {
   const balanceInsufficient =
     tokenInBalance != null && snapshot.context.parsedFormValues.amountIn != null
       ? compareAmounts(
-        tokenInBalance,
-        snapshot.context.parsedFormValues.amountIn
-      ) === -1
+          tokenInBalance,
+          snapshot.context.parsedFormValues.amountIn
+        ) === -1
       : false
 
   const showDepositButton =
