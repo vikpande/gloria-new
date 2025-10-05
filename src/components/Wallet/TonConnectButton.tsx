@@ -1,5 +1,6 @@
-import { Button, Text } from "@radix-ui/themes"
+import { Text } from "@radix-ui/themes"
 import { useTonConnectUI } from "@tonconnect/ui-react"
+import { Button } from "antd"
 import Image from "next/image"
 
 export function TonConnectButton() {
@@ -7,22 +8,19 @@ export function TonConnectButton() {
 
   return (
     <Button
-      type="button"
+      type="default"
+      variant="outlined"
       onClick={() => {
         void tonConnectUI.openModal()
       }}
-      size="4"
-      radius="medium"
-      variant="soft"
-      color="gray"
-      className="px-2.5"
+      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
     >
       <div className="w-full flex items-center justify-start gap-2">
         <Image
           src="/static/icons/wallets/ton.svg"
           alt=""
-          width={36}
-          height={36}
+          width={28}
+          height={28}
         />
         <Text size="2" weight="bold">
           TON

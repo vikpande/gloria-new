@@ -27,7 +27,7 @@ export function TradeNavigationLinks({
         { className: "flex-1" }
       )}
 
-      {renderHostAppLink(
+      {/* {renderHostAppLink(
         "otc",
         <div
           className={cn(
@@ -40,7 +40,7 @@ export function TradeNavigationLinks({
           OTC
         </div>,
         { className: "flex-1" }
-      )}
+      )} */}
     </div>
   )
 }

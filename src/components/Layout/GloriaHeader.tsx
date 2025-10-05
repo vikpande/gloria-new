@@ -158,7 +158,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
         placement="left"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        bodyStyle={{ padding: 0 }}
+
       >
         <Menu
           mode="inline"

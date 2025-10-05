@@ -1,8 +1,10 @@
 "use client"
 
-import { Button, Popover, Text } from "@radix-ui/themes"
+import { Popover, Text } from "@radix-ui/themes"
+
 import Image from "next/image"
 import { useContext } from "react"
+import { useRouter } from "next/navigation"
 import type { Connector } from "wagmi"
 
 import WalletConnections from "@src/components/Wallet/WalletConnections"
@@ -13,12 +15,15 @@ import { FeatureFlagsContext } from "@src/providers/FeatureFlagsProvider"
 import { useSignInWindowOpenState } from "@src/stores/useSignInWindowOpenState"
 import { mapStringToEmojis } from "@src/utils/emoji"
 import { TonConnectButton } from "./TonConnectButton"
+import { Button } from "antd"
+import { WalletOutlined } from "@ant-design/icons"
 
 const ConnectWallet = () => {
   const { isOpen, setIsOpen } = useSignInWindowOpenState()
   const { state, signIn, connectors } = useConnectWallet()
   const { shortAccountId } = useShortAccountId(state.displayAddress ?? "")
   const { whitelabelTemplate } = useContext(FeatureFlagsContext)
+  const router = useRouter()
 
   const handleNearWalletSelector = () => {
     return signIn({ id: ChainType.Near })
@@ -40,7 +45,7 @@ const ConnectWallet = () => {
     return (
       <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
         <Popover.Trigger>
-          <Button className="bg-black hover:bg-gray-900">
+          <Button className="bg-black text-white hover:bg-gray-900">
             Sign in
           </Button>
         </Popover.Trigger>
@@ -48,29 +53,26 @@ const ConnectWallet = () => {
           maxWidth={{ initial: "90vw", xs: "480px" }}
           minWidth={{ initial: "300px", xs: "330px" }}
           maxHeight={{ initial: "70vh", sm: "90vh" }}
-          className="md:mr-[48px] dark:bg-black-800 rounded-2xl"
+          className="md:mr-[48px] bg-white border border-gray-200 rounded-xl shadow-lg"
         >
-          <Text size="1">How do you want to sign in?</Text>
-          <div className="w-full grid grid-cols-1 gap-4 mt-4">
-            <Text size="1" color="gray">
+          <div className="w-full grid grid-cols-1 gap-4">
+            <Text size="2" className="text-black">
               Popular options
             </Text>
 
             {isSupportedByBrowser() && (
               <Button
+                type="default"
+                variant="outlined"
                 onClick={() => handlePasskey()}
-                size="4"
-                radius="medium"
-                variant="soft"
-                color="gray"
-                className="px-2.5"
+                className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
               >
                 <div className="w-full flex items-center justify-start gap-2">
                   <Image
                     src="/static/icons/wallets/webauthn.svg"
                     alt=""
-                    width={36}
-                    height={36}
+                    width={28}
+                    height={28}
                   />
                   <Text size="2" weight="bold">
                     Passkey
@@ -78,8 +80,6 @@ const ConnectWallet = () => {
                 </div>
               </Button>
             )}
-
-
 
             {whitelabelTemplate === "turboswap" ? (
               <>
@@ -89,12 +89,10 @@ const ConnectWallet = () => {
                   .map((connector) => (
                     <Button
                       key={connector.uid}
+                      type="default"
+                      variant="outlined"
                       onClick={() => handleWalletConnect(connector)}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <WalletIcon connector={connector} />
@@ -111,12 +109,10 @@ const ConnectWallet = () => {
                   .map((connector) => (
                     <Button
                       key={connector.uid}
+                      type="default"
+                      variant="outlined"
                       onClick={() => handleWalletConnect(connector)}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <WalletIcon connector={connector} />
@@ -134,19 +130,17 @@ const ConnectWallet = () => {
                 </Text>
 
                 <Button
+                  type="default"
+                  variant="outlined"
                   onClick={handleNearWalletSelector}
-                  size="4"
-                  radius="medium"
-                  variant="soft"
-                  color="gray"
-                  className="px-2.5"
+                  className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                 >
                   <div className="w-full flex items-center justify-start gap-2">
                     <Image
                       src="/static/icons/wallets/near-wallet-selector.svg"
                       alt="Near Wallet Selector"
-                      width={36}
-                      height={36}
+                      width={28}
+                      height={28}
                     />
                     <Text size="2" weight="bold">
                       NEAR Wallet
@@ -155,19 +149,17 @@ const ConnectWallet = () => {
                 </Button>
 
                 <Button
+                  type="default"
+                  variant="outlined"
                   onClick={handleSolanaWalletSelector}
-                  size="4"
-                  radius="medium"
-                  variant="soft"
-                  color="gray"
-                  className="px-2.5"
+                  className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                 >
                   <div className="w-full flex items-center justify-start gap-2">
                     <Image
                       src="/static/icons/wallets/solana-logo-mark.svg"
                       alt="Solana Wallet Selector"
-                      width={36}
-                      height={36}
+                      width={28}
+                      height={28}
                     />
                     <Text size="2" weight="bold">
                       Solana Wallet
@@ -183,12 +175,10 @@ const ConnectWallet = () => {
                   .map((connector) => (
                     <Button
                       key={connector.uid}
+                      type="default"
+                      variant="outlined"
                       onClick={() => handleWalletConnect(connector)}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <WalletIcon connector={connector} />
@@ -203,19 +193,17 @@ const ConnectWallet = () => {
               // Original order for other templates
               <>
                 <Button
+                  type="default"
+                  variant="outlined"
                   onClick={handleSolanaWalletSelector}
-                  size="4"
-                  radius="medium"
-                  variant="soft"
-                  color="gray"
-                  className="px-2.5"
+                  className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                 >
                   <div className="w-full flex items-center justify-start gap-2">
                     <Image
                       src="/static/icons/wallets/solana-logo-mark.svg"
                       alt="Solana Wallet Selector"
-                      width={36}
-                      height={36}
+                      width={28}
+                      height={28}
                     />
                     <Text size="2" weight="bold">
                       Solana Wallet
@@ -226,19 +214,17 @@ const ConnectWallet = () => {
                 {whitelabelTemplate !== "solswap" && (
                   <>
                     <Button
+                      type="default"
+                      variant="outlined"
                       onClick={handleNearWalletSelector}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <Image
                           src="/static/icons/wallets/near-wallet-selector.svg"
                           alt="Near Wallet Selector"
-                          width={36}
-                          height={36}
+                          width={28}
+                          height={28}
                         />
                         <Text size="2" weight="bold">
                           NEAR Wallet
@@ -248,12 +234,10 @@ const ConnectWallet = () => {
                     {connectors.slice(0, 1).map((connector) => (
                       <Button
                         key={connector.uid}
+                        type="default"
+                        variant="outlined"
                         onClick={() => handleWalletConnect(connector)}
-                        size="4"
-                        radius="medium"
-                        variant="soft"
-                        color="gray"
-                        className="px-2.5"
+                        className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                       >
                         <div className="w-full flex items-center justify-start gap-2">
                           <WalletIcon connector={connector} />
@@ -268,19 +252,17 @@ const ConnectWallet = () => {
 
                     {/* Stellar connector */}
                     <Button
+                      type="default"
+                      variant="outlined"
                       onClick={() => signIn({ id: ChainType.Stellar })}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <Image
                           src="/static/icons/network/stellar.svg"
                           alt="Stellar"
-                          width={36}
-                          height={36}
+                          width={28}
+                          height={28}
                         />
                         <Text size="2" weight="bold">
                           Stellar Wallet
@@ -290,19 +272,17 @@ const ConnectWallet = () => {
 
                     {/* Tron connector */}
                     <Button
+                      type="default"
+                      variant="outlined"
                       onClick={() => signIn({ id: ChainType.Tron })}
-                      size="4"
-                      radius="medium"
-                      variant="soft"
-                      color="gray"
-                      className="px-2.5"
+                      className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                     >
                       <div className="w-full flex items-center justify-start gap-2">
                         <Image
                           src="/static/icons/network/tron.svg"
                           alt="Tron"
-                          width={36}
-                          height={36}
+                          width={28}
+                          height={28}
                         />
                         <Text size="2" weight="bold">
                           Tron Wallet
@@ -319,12 +299,10 @@ const ConnectWallet = () => {
                       .map((connector) => (
                         <Button
                           key={connector.uid}
+                          type="default"
+                          variant="outlined"
                           onClick={() => handleWalletConnect(connector)}
-                          size="4"
-                          radius="medium"
-                          variant="soft"
-                          color="gray"
-                          className="px-2.5"
+                          className="w-full px-4 py-2 shadow-sm h-auto custom-wallet-button"
                         >
                           <div className="w-full flex items-center justify-start gap-2">
                             <WalletIcon connector={connector} />
@@ -347,14 +325,38 @@ const ConnectWallet = () => {
   return (
     <div className="flex gap-2">
       <Popover.Root>
+        <>
+          <div className="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-sm">
+            <WalletOutlined className="text-gray-600" />
+            <Text className="text-sm font-medium text-gray-900">
+              $4,000
+            </Text>
+          </div>
+
+          <Button
+            className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
+            onClick={() => router.push('/swap')}
+          >
+            Swap
+          </Button>
+          <Button
+            className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
+            onClick={() => router.push('/deposit')}
+          >
+            Deposit
+          </Button>
+          <Button
+            className="bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 border-gray-300 hover:border-gray-400 shadow-sm"
+            onClick={() => router.push('/account')}
+          >
+            Account
+          </Button>
+        </>
         <Popover.Trigger>
           <Button
-            type={"button"}
-            variant={"soft"}
-            color={"gray"}
-            size={"2"}
-            radius={"full"}
-            className="font-bold text-gray-12"
+            htmlType="submit"
+            type="primary"
+            className="bg-gray-900 hover:bg-black text-white border-gray-900 hover:border-black shadow-sm font-medium"
           >
             {state.chainType !== "webauthn" ? (
               shortAccountId
@@ -364,8 +366,8 @@ const ConnectWallet = () => {
                   <Image
                     src="/static/icons/wallets/webauthn.svg"
                     alt=""
-                    width={24}
-                    height={24}
+                    width={28}
+                    height={28}
                     className="rounded-full size-6 bg-[#000]"
                     style={{
                       mask: "radial-gradient(13px at 31px 50%, transparent 99%, rgb(255, 255, 255) 100%)",
@@ -383,7 +385,7 @@ const ConnectWallet = () => {
         </Popover.Trigger>
         <Popover.Content
           minWidth={{ initial: "300px", xs: "330px" }}
-          className="mt-1 md:mr-[48px] max-w-xs dark:bg-black-800 rounded-2xl"
+          className="mt-1 md:mr-[48px] max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg"
         >
           <div className="flex flex-col gap-5">
             <WalletConnections />
@@ -401,8 +403,8 @@ function WalletIcon({ connector }: { connector: Connector }) {
         <Image
           src="/static/icons/wallets/wallet-connect.svg"
           alt="Wallet Connect"
-          width={36}
-          height={36}
+          width={28}
+          height={28}
         />
       )
     case "coinbaseWalletSDK":
@@ -410,8 +412,8 @@ function WalletIcon({ connector }: { connector: Connector }) {
         <Image
           src="/static/icons/wallets/coinbase-wallet.svg"
           alt="Coinbase Wallet"
-          width={36}
-          height={36}
+          width={28}
+          height={28}
         />
       )
     case "metaMaskSDK":
@@ -419,8 +421,8 @@ function WalletIcon({ connector }: { connector: Connector }) {
         <Image
           src="/static/icons/wallets/meta-mask.svg"
           alt="MetaMask"
-          width={36}
-          height={36}
+          width={28}
+          height={28}
         />
       )
   }
@@ -430,8 +432,8 @@ function WalletIcon({ connector }: { connector: Connector }) {
       <Image
         src={connector.icon.trim()}
         alt={connector.name}
-        width={36}
-        height={36}
+        width={28}
+        height={28}
       />
     )
   }

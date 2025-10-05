@@ -124,6 +124,39 @@ html.tmpl-dogecoinswap,
     color: #fff !important;
 }
 
+/* Custom Wallet Buttons */
+.custom-wallet-button {
+    border-color: #000000 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+
+.custom-wallet-button:hover {
+    border-color: #000000 !important;
+    background: #eef0f3 !important;
+    color: #111827 !important;
+}
+
+.custom-wallet-button:focus {
+    border-color: #000000 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+}
+
+.custom-wallet-button:active {
+    border-color: #000000 !important;
+    background: #f9fafb !important;
+    color: #111827 !important;
+}
+
+.ant-btn:hover{
+  border-color: #000000 !important;
+  color: #111827 !important;
+}
+
 .ant-input,
 .ant-input-affix-wrapper {
     border-radius: 8px;

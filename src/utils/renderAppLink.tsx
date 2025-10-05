@@ -11,7 +11,8 @@ export function renderAppLink(
     | "sign-in"
     | "swap"
     | "otc"
-    | "account",
+    | "account"
+    | "profile",
   children: ReactNode,
   props: { className?: string },
   searchParams?: ReadonlyURLSearchParams
@@ -54,7 +55,7 @@ export function renderAppLink(
       )
     case "swap":
       return (
-        <Link href="/" {...props}>
+        <Link href="/swap" {...props}>
           {children}
         </Link>
       )
@@ -67,6 +68,12 @@ export function renderAppLink(
     case "account":
       return (
         <Link href="/account" {...props}>
+          {children}
+        </Link>
+      )
+    case "profile":
+      return (
+        <Link href="/profile" {...props}>
           {children}
         </Link>
       )

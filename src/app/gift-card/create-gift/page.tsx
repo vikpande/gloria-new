@@ -1,5 +1,5 @@
 "use client"
-import { useDeterminePair } from "@src/app/home/_utils/useDeterminePair"
+import { useDeterminePair } from "@src/app/swap/_utils/useDeterminePair"
 import { GiftHistoryWidget } from "@src/components/DefuseSDK/features/gift/components/GiftHistoryWidget"
 import { GiftMakerWidget } from "@src/components/DefuseSDK/features/gift/components/GiftMakerWidget"
 import Paper from "@src/components/Paper"

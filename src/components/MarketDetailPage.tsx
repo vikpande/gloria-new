@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Card,
   Avatar,
@@ -134,6 +135,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
   tags = [],
   related = [],
 }) => {
+  const router = useRouter();
   const [side, setSide] = useState<MarketSide>("Buy");
   const [outcome, setOutcome] = useState<Outcome>("Yes");
   const [amount, setAmount] = useState<number>(0);
@@ -228,8 +230,8 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     key={t}
                     onClick={() => setTimeIdx(i)}
                     className={`h-8 px-3 rounded-md text-sm ${timeIdx === i
-                        ? "bg-black text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      ? "bg-black text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
                   >
                     {t}
@@ -399,8 +401,8 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                   </div>
                   <div
                     className={`text-sm inline-flex items-center gap-1 ${aiInsights.summary.deltaPct >= 0
-                        ? "text-green-600"
-                        : "text-red-600"
+                      ? "text-green-600"
+                      : "text-red-600"
                       }`}
                   >
                     <RiseOutlined />
@@ -464,10 +466,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                             </span>
                             <Tag
                               className={`border-0 rounded-md ${e.stance === "Bullish"
-                                  ? "bg-green-100 text-green-800"
-                                  : e.stance === "Bearish"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-gray-100 text-gray-700"
+                                ? "bg-green-100 text-green-800"
+                                : e.stance === "Bearish"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-700"
                                 }`}
                             >
                               {e.stance}
@@ -506,10 +508,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                           <div className="mt-1 flex items-center justify-between">
                             <Tag
                               className={`border-0 rounded-md ${n.sentiment === "Positive"
-                                  ? "bg-green-100 text-green-800"
-                                  : n.sentiment === "Negative"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-gray-100 text-gray-700"
+                                ? "bg-green-100 text-green-800"
+                                : n.sentiment === "Negative"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-700"
                                 }`}
                             >
                               {n.sentiment}
@@ -613,6 +615,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                 type="primary"
                 className="w-full h-10 bg-black hover:bg-gray-900"
                 disabled={!amount}
+                onClick={() => { router.push("/account") }}
               >
                 {side === "Buy" ? "Trade" : "Place Sell Order"}
               </Button>

@@ -1,5 +1,5 @@
 "use client"
-import { useDeterminePair } from "@src/app/home/_utils/useDeterminePair"
+import { useDeterminePair } from "@src/app/swap/_utils/useDeterminePair"
 import { getTokens } from "@src/components/DefuseSDK/features/machines/1cs"
 import { SwapWidget } from "@src/components/DefuseSDK/features/swap/components/SwapWidget"
 import { isBaseToken } from "@src/components/DefuseSDK/utils"

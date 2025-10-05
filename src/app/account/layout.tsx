@@ -1,4 +1,5 @@
 import Layout from "@src/components/Layout"
+import GloriaLayout from "@src/components/Layout/Gloria"
 import { PreloadFeatureFlags } from "@src/components/PreloadFeatureFlags"
 import { settings } from "@src/config/settings"
 import type { Metadata } from "next"
@@ -11,7 +12,7 @@ export function generateMetadata(): Metadata {
 export default function AccountLayout({ children }: { children: ReactNode }) {
   return (
     <PreloadFeatureFlags>
-      <Layout>{children}</Layout>
+      <GloriaLayout>{children}</GloriaLayout>
     </PreloadFeatureFlags>
   )
 }

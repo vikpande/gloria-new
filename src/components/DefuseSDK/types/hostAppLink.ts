@@ -8,6 +8,7 @@ export type HostAppRoute =
   | "swap"
   | "otc"
   | "account"
+  | "profile"
 
 export type RenderHostAppLink = (
   routeName: HostAppRoute,

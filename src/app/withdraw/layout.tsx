@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import type React from "react"
 import type { PropsWithChildren } from "react"
 
-import Layout from "@src/components/Layout"
 import { PreloadFeatureFlags } from "@src/components/PreloadFeatureFlags"
 import { whitelabelTemplateFlag } from "@src/config/featureFlags"
 import { settings } from "@src/config/settings"
+import GloriaLayout from "@src/components/Layout/Gloria"
 
 export async function generateMetadata(): Promise<Metadata> {
   const templ = await whitelabelTemplateFlag()
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const WithdrawLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <PreloadFeatureFlags>
-      <Layout>{children}</Layout>
+      <GloriaLayout>{children}</GloriaLayout>
     </PreloadFeatureFlags>
   )
 }

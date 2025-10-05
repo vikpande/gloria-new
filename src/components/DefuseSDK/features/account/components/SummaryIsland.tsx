@@ -1,4 +1,4 @@
-import { Eye, Gift, PaperPlaneRight, Plus } from "@phosphor-icons/react"
+import { Eye, Gift, PaperPlaneRight, Plus, UserCircleIcon } from "@phosphor-icons/react"
 import { Button, Skeleton } from "@radix-ui/themes"
 import { useState } from "react"
 import { AuthGate } from "../../../components/AuthGate"
@@ -75,7 +75,7 @@ export function SummaryIsland({
             routeName="deposit"
             renderHostAppLink={renderHostAppLink}
             className="flex-1"
-            variant="primary"
+            variant="secondary"
             label="Deposit"
             icon={<Plus weight="bold" className="size-5" />}
           />
@@ -88,13 +88,21 @@ export function SummaryIsland({
             icon={<PaperPlaneRight weight="bold" className="size-5" />}
           />
           <NavButton
+            routeName="profile"
+            renderHostAppLink={renderHostAppLink}
+            className="flex-1"
+            variant="secondary"
+            label="Profile"
+            icon={<UserCircleIcon weight="bold" className="size-5" />}
+          />
+          {/* <NavButton
             routeName="gift"
             renderHostAppLink={renderHostAppLink}
             className="flex-1"
             variant="secondary"
             label="Gift"
             icon={<Gift weight="bold" className="size-5" />}
-          />
+          /> */}
         </div>
       </AuthGate>
     </Island>
