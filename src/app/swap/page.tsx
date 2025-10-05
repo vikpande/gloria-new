@@ -58,7 +58,7 @@ export default function Swap() {
           return { txHash: outcome.transaction.hash }
         }}
         signMessage={(params) => signMessage(params)}
-        onSuccessSwap={() => { }}
+        onSuccessSwap={() => {}}
         renderHostAppLink={(routeName, children, props) =>
           renderAppLink(routeName, children, props, searchParams)
         }

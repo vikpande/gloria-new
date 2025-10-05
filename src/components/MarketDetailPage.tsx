@@ -231,11 +231,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     type="button"
                     key={t}
                     onClick={() => setTimeIdx(i)}
-                    className={`h-8 px-3 rounded-md text-sm ${
-                      timeIdx === i
-                        ? "bg-black text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
+                    className={`h-8 px-3 rounded-md text-sm ${timeIdx === i
+                      ? "bg-black text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
                   >
                     {t}
                   </button>
@@ -403,11 +402,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </span>
                   </div>
                   <div
-                    className={`text-sm inline-flex items-center gap-1 ${
-                      aiInsights.summary.deltaPct >= 0
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
+                    className={`text-sm inline-flex items-center gap-1 ${aiInsights.summary.deltaPct >= 0
+                      ? "text-green-600"
+                      : "text-red-600"
+                      }`}
                   >
                     <RiseOutlined />
                     {aiInsights.summary.deltaPct >= 0 ? "+" : ""}
@@ -466,19 +464,18 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </div>
                     <ul className="space-y-3">
                       {aiInsights.experts.map((e: ExpertInsight, i: number) => (
-                        <li key={`expert-${e.name}-${i}`} className="text-sm">
+                        <li key={`expert-${i}`} className="text-sm">
                           <div className="flex items-center justify-between">
                             <span className="font-medium text-gray-900">
                               {e.source}
                             </span>
                             <Tag
-                              className={`border-0 rounded-md ${
-                                e.stance === "Bullish"
-                                  ? "bg-green-100 text-green-800"
-                                  : e.stance === "Bearish"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-gray-100 text-gray-700"
-                              }`}
+                              className={`border-0 rounded-md ${e.stance === "Bullish"
+                                ? "bg-green-100 text-green-800"
+                                : e.stance === "Bearish"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-700"
+                                }`}
                             >
                               {e.stance}
                             </Tag>
@@ -515,13 +512,12 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                           </div>
                           <div className="mt-1 flex items-center justify-between">
                             <Tag
-                              className={`border-0 rounded-md ${
-                                n.sentiment === "Positive"
-                                  ? "bg-green-100 text-green-800"
-                                  : n.sentiment === "Negative"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-gray-100 text-gray-700"
-                              }`}
+                              className={`border-0 rounded-md ${n.sentiment === "Positive"
+                                ? "bg-green-100 text-green-800"
+                                : n.sentiment === "Negative"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-700"
+                                }`}
                             >
                               {n.sentiment}
                             </Tag>

@@ -26,8 +26,8 @@ export default function Deposit() {
         userAddress={state.isVerified ? state.address : undefined}
         userWalletAddress={
           state.isVerified &&
-            state.chainType !== ChainType.WebAuthn &&
-            state.displayAddress
+          state.chainType !== ChainType.WebAuthn &&
+          state.displayAddress
             ? state.displayAddress
             : null
         }

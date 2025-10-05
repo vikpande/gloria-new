@@ -1,5 +1,5 @@
-import type { AIInsightsData } from "@/components/MarketDetailPage"
-import aiInsightsData from "@/data/aiInsights.json"
+import type { AIInsightsData } from "@src/components/MarketDetailPage"
+import aiInsightsData from "@src/data/aiInsights.json"
 
 const insights: AIInsightsData = aiInsightsData as AIInsightsData
 

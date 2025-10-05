@@ -115,9 +115,9 @@ export function AssetList<T extends TokenInfo>({
 function renderBalance({ value }: { value: TokenValue | undefined }) {
   const shortFormatted = value
     ? formatTokenValue(value.amount, value.decimals, {
-      fractionDigits: 4,
-      min: 0.0001,
-    })
+        fractionDigits: 4,
+        min: 0.0001,
+      })
     : undefined
 
   return (
