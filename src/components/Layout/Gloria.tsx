@@ -12,7 +12,7 @@ import { useMixpanelBus } from "@src/hooks/useMixpanelBus"
 import { usePathLogging } from "@src/hooks/usePathLogging"
 import { WalletVerificationProvider } from "@src/providers/WalletVerificationProvider"
 
-const { Content, Sider } = Layout
+
 const HEADER_PX = 64
 
 const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
@@ -44,7 +44,7 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
         style={{ height: `calc(100vh - ${HEADER_PX}px)` }}
       >
         {!isMobile && isAssistantVisible && (
-          <Sider
+          <Layout.Sider
             width={350}
             collapsedWidth={0}
             className="bg-gray-50 border-r border-gray-200"
@@ -58,9 +58,9 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
             >
               <AssistantPanel className="h-full" onCollapse={onHideAssistant} />
             </div>
-          </Sider>
+          </Layout.Sider>
         )}
-        <Content className="bg-white p-6 overflow-y-auto">{children}</Content>
+        <Layout.Content className="bg-white p-6 overflow-y-auto">{children}</Layout.Content>
         {/* <Footer />
       <NavbarMobile />
       <PageBackground /> */}

@@ -9,8 +9,6 @@ import { Button, Card, Divider, Tag, Tooltip, Typography } from "antd"
 import Link from "next/link"
 import type React from "react"
 
-const { Text, Title } = Typography
-
 export type Trend = "up" | "down" | "neutral"
 
 export interface MarketCardProps {
@@ -80,17 +78,17 @@ const MarketCard: React.FC<MarketCardProps> = ({
       {/* Title & description */}
       <div className="mt-2 space-y-1.5">
         <Link href={`/market/${id}`}>
-          <Title
+          <Typography.Title
             level={5}
             className="!mb-0 text-gray-900 leading-snug font-semibold hover:text-blue-600 cursor-pointer transition-colors"
           >
             {title}
-          </Title>
+          </Typography.Title>
         </Link>
         {description && (
-          <Text className="text-gray-500 text-sm leading-relaxed line-clamp-2">
+          <Typography.Text className="text-gray-500 text-sm leading-relaxed line-clamp-2">
             {description}
-          </Text>
+          </Typography.Text>
         )}
         <div className="flex items-center gap-1.5 pt-1 text-xs text-gray-500">
           <CalendarOutlined /> {formattedDate}

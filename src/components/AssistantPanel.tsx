@@ -10,8 +10,6 @@ import { Avatar, Button, Typography } from "antd"
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 
-const { Text } = Typography
-
 interface Message {
   id: string
   text: string
@@ -109,9 +107,8 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
             className={`flex ${m.isUser ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`flex items-end gap-2 max-w-[75%] ${
-                m.isUser ? "flex-row-reverse" : ""
-              }`}
+              className={`flex items-end gap-2 max-w-[75%] ${m.isUser ? "flex-row-reverse" : ""
+                }`}
             >
               <Avatar
                 size="small"
@@ -121,17 +118,16 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
                 }
               />
               <div
-                className={`px-3 py-2 rounded-lg text-sm shadow-sm ${
-                  m.isUser ? "bg-black text-white" : "bg-gray-100 text-gray-800"
-                }`}
+                className={`px-3 py-2 rounded-lg text-sm shadow-sm ${m.isUser ? "bg-black text-white" : "bg-gray-100 text-gray-800"
+                  }`}
               >
                 <p className="m-0">{m.text}</p>
-                <Text className="block text-[10px] mt-1 opacity-60">
+                <Typography.Text className="block text-[10px] mt-1 opacity-60">
                   {m.timestamp.toLocaleTimeString([], {
                     hour: "2-digit",
                     minute: "2-digit",
                   })}
-                </Text>
+                </Typography.Text>
               </div>
             </div>
           </div>

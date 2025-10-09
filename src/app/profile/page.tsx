@@ -28,9 +28,6 @@ import {
 import type React from "react"
 import { useMemo, useState } from "react"
 
-const { Title, Text } = Typography
-const { CheckableTag } = Tag
-
 const ALL_CATEGORIES = getCategoryNames()
 
 const LEVELS = [
@@ -194,15 +191,15 @@ const ProfilePage: React.FC = () => {
           className="xl:col-span-4 border border-gray-200 rounded-2xl"
           bodyStyle={{ padding: 20 }}
         >
-          <Title level={5} className="!mb-3">
+          <Typography.Title level={5} className="!mb-3">
             Trading Stats
-          </Title>
+          </Typography.Title>
           <div className="space-y-5">
             <div className="flex items-center justify-between">
               <Space>
                 <AimOutlined className="text-green-600" />
                 <div>
-                  <Text type="secondary">Win Rate</Text>
+                  <Typography.Text type="secondary">Win Rate</Typography.Text>
                   <div className="text-xl font-semibold">
                     {user.stats.winRate.toFixed(1)}%
                   </div>
@@ -215,7 +212,7 @@ const ProfilePage: React.FC = () => {
               <Space>
                 <CalendarOutlined className="text-gray-500" />
                 <div>
-                  <Text type="secondary">Total Trades</Text>
+                  <Typography.Text type="secondary">Total Trades</Typography.Text>
                   <div className="text-xl font-semibold">
                     {user.stats.totalTrades}
                   </div>
@@ -227,7 +224,7 @@ const ProfilePage: React.FC = () => {
               <Space>
                 <DollarCircleOutlined className="text-gray-700" />
                 <div>
-                  <Text type="secondary">Total Volume</Text>
+                  <Typography.Text type="secondary">Total Volume</Typography.Text>
                   <div className="text-xl font-semibold">
                     ${user.stats.totalVolume.toLocaleString()}
                   </div>
@@ -239,7 +236,7 @@ const ProfilePage: React.FC = () => {
             <Space>
               <CalendarOutlined className="text-gray-500" />
               <div>
-                <Text type="secondary">Member Since</Text>
+                <Typography.Text type="secondary">Member Since</Typography.Text>
                 <div className="font-medium">{user.memberSince}</div>
               </div>
             </Space>
@@ -252,24 +249,24 @@ const ProfilePage: React.FC = () => {
           bodyStyle={{ padding: 20 }}
         >
           <div className="mb-2">
-            <Title level={5} className="!mb-0">
+            <Typography.Title level={5} className="!mb-0">
               Personal Preferences
-            </Title>
-            <Text type="secondary">
+            </Typography.Title>
+            <Typography.Text type="secondary">
               Pick categories to personalize your feed
-            </Text>
+            </Typography.Text>
           </div>
 
           <div className="flex flex-wrap gap-3 mt-4">
             {ALL_CATEGORIES.map((cat) => (
-              <CheckableTag
+              <Tag.CheckableTag
                 key={cat}
                 checked={selectedCats.includes(cat)}
                 onChange={(checked) => toggleCat(cat, checked)}
                 className="pref-tag"
               >
                 {cat}
-              </CheckableTag>
+              </Tag.CheckableTag>
             ))}
           </div>
 
@@ -289,9 +286,9 @@ const ProfilePage: React.FC = () => {
           bodyStyle={{ padding: 20 }}
         >
           <div className="flex items-center justify-between mb-2">
-            <Title level={5} className="!mb-0">
+            <Typography.Title level={5} className="!mb-0">
               Rewards
-            </Title>
+            </Typography.Title>
             <GiftOutlined className="text-gray-500" />
           </div>
 
@@ -330,11 +327,10 @@ const ProfilePage: React.FC = () => {
             {LEVELS.map((l) => (
               <Tag
                 key={l.key}
-                className={`border-0 ${
-                  levelInfo.current === l.key
-                    ? "bg-black text-white"
-                    : "bg-gray-100 text-gray-700"
-                }`}
+                className={`border-0 ${levelInfo.current === l.key
+                  ? "bg-black text-white"
+                  : "bg-gray-100 text-gray-700"
+                  }`}
               >
                 {l.key}
               </Tag>
@@ -348,9 +344,9 @@ const ProfilePage: React.FC = () => {
           bodyStyle={{ padding: 20 }}
         >
           <div className="mb-2 flex items-center justify-between">
-            <Title level={5} className="!mb-0">
+            <Typography.Title level={5} className="!mb-0">
               Recent Activity
-            </Title>
+            </Typography.Title>
             <Button type="text" className="text-gray-600 hover:!text-black">
               View All
             </Button>
@@ -385,9 +381,9 @@ const ProfilePage: React.FC = () => {
           className="xl:col-span-4 border border-gray-200 rounded-2xl"
           bodyStyle={{ padding: 20 }}
         >
-          <Title level={5} className="!mb-2">
+          <Typography.Title level={5} className="!mb-2">
             Account Level
-          </Title>
+          </Typography.Title>
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-black flex items-center justify-center mb-3">
               <UserOutlined className="text-white text-2xl" />

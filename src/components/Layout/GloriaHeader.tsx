@@ -15,8 +15,6 @@ const ConnectWallet = dynamic(() => import("@src/components/Wallet"), {
   ),
 })
 
-const { Header: AntHeader } = Layout
-
 interface HeaderProps {
   balance?: number
   user?: { name: string; avatar?: string }
@@ -65,7 +63,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
 
   return (
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <AntHeader className="!px-4 lg:!px-6 bg-white h-16 flex items-center">
+      <Layout.Header className="!px-4 lg:!px-6 bg-white h-16 flex items-center">
         {/* LEFT: Brand + Mobile Menu Button */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <button
@@ -110,9 +108,8 @@ const GloriaHeader: React.FC<HeaderProps> = ({
               <Button
                 type="text"
                 icon={<RobotOutlined />}
-                className={`${
-                  isAssistantVisible ? "text-black" : "text-gray-400"
-                } hover:!text-black`}
+                className={`${isAssistantVisible ? "text-black" : "text-gray-400"
+                  } hover:!text-black`}
                 onClick={onHideAssistant}
               />
             </Tooltip>
@@ -120,7 +117,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
           {/* <AddTurboChainButton /> */}
           <ConnectWallet />
         </div>
-      </AntHeader>
+      </Layout.Header>
 
       {/* Mobile Drawer for Navigation */}
       <Drawer

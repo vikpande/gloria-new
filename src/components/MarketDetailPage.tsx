@@ -37,9 +37,6 @@ import {
   YAxis,
 } from "recharts"
 
-const { Title, Text } = Typography
-const { Panel } = Collapse
-
 /* ---------- Types ---------- */
 export type MarketSide = "Buy" | "Sell"
 export type Outcome = "Yes" | "No"
@@ -171,18 +168,18 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
           </Avatar>
           <div>
             <div className="flex items-center gap-2">
-              <Title level={3} className="!mb-0 text-gray-900">
+              <Typography.Title level={3} className="!mb-0 text-gray-900">
                 {title}
-              </Title>
+              </Typography.Title>
               <Tag className="bg-gray-100 text-gray-700 border-0">
                 {category}
               </Tag>
             </div>
             <div className="mt-1 flex items-center gap-3 text-sm text-gray-500">
               <span>
-                <Text strong className="text-gray-900">
+                <Typography.Text strong className="text-gray-900">
                   {chancePct.toFixed(0)}% chance
-                </Text>{" "}
+                </Typography.Text>{" "}
                 {isUp ? (
                   <span className="text-green-600 inline-flex items-center gap-1">
                     <ArrowUpOutlined /> {Math.abs(changePct).toFixed(0)}%
@@ -279,7 +276,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
               expandIconPosition="end"
             >
               {/* ---------- ORDER BOOK ---------- */}
-              <Panel
+              <Collapse.Panel
                 key="orderbook"
                 header={
                   <div className="flex items-center gap-3">
@@ -382,10 +379,10 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     No order book data.
                   </div>
                 )}
-              </Panel>
+              </Collapse.Panel>
 
               {/* ---------- AI INSIGHTS ---------- */}
-              <Panel
+              <Collapse.Panel
                 key="ai"
                 header={<span className="font-medium">AI Insights</span>}
                 className="rounded-xl"
@@ -530,7 +527,7 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                     </ul>
                   </Card>
                 </div>
-              </Panel>
+              </Collapse.Panel>
             </Collapse>
           </div>
         </div>
@@ -687,9 +684,9 @@ const MarketDetailPage: React.FC<MarketDetailProps> = ({
                         <div className="text-lg font-semibold text-gray-900">
                           {item.chance}%
                         </div>
-                        <Text type="secondary" className="text-xs">
+                        <Typography.Text type="secondary" className="text-xs">
                           chance
-                        </Text>
+                        </Typography.Text>
                       </div>
                     </div>
                   </List.Item>
