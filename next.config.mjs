@@ -5,6 +5,18 @@ import { DedupePlugin } from "@tinkoff/webpack-dedupe-plugin"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: true,
+  transpilePackages: [
+    'antd',
+    '@ant-design/icons',
+    '@ant-design/icons-svg',
+    'rc-util',
+    'rc-pagination',
+    'rc-picker',
+    'rc-notification',
+    'rc-tooltip',
+    'rc-tree',
+    'rc-table'
+  ],
   turbopack: {
     rules: {
       "*.svg": {

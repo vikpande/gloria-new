@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
 import { WagmiProvider } from "wagmi"
 
+import AntdRegistry from "@src/components/AntdRegistry"
 import { InitDefuseSDK } from "@src/components/InitDefuseSDK"
 import { SentryTracer } from "@src/components/SentryTracer"
 import { whitelabelTemplateFlag } from "@src/config/featureFlags"
@@ -122,29 +123,31 @@ const RootLayout = async ({
       <body>
         <InitDefuseSDK />
 
-        <ThemeProvider>
-          <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-              <NearWalletProvider>
-                <SolanaWalletProvider>
-                  <StellarWalletProvider>
-                    <TonConnectUIProvider>
-                      <TronWalletProvider>
-                        <WebAuthnProvider>
-                          <MixpanelProvider>{children}</MixpanelProvider>
-                        </WebAuthnProvider>
-                        <SentryTracer />
-                      </TronWalletProvider>
-                    </TonConnectUIProvider>
-                  </StellarWalletProvider>
-                </SolanaWalletProvider>
-              </NearWalletProvider>
-              {APP_ENV === "development" && (
-                <ReactQueryDevtools initialIsOpen={false} />
-              )}
-            </QueryClientProvider>
-          </WagmiProvider>
-        </ThemeProvider>
+        <AntdRegistry>
+          <ThemeProvider>
+            <WagmiProvider config={config}>
+              <QueryClientProvider client={queryClient}>
+                <NearWalletProvider>
+                  <SolanaWalletProvider>
+                    <StellarWalletProvider>
+                      <TonConnectUIProvider>
+                        <TronWalletProvider>
+                          <WebAuthnProvider>
+                            <MixpanelProvider>{children}</MixpanelProvider>
+                          </WebAuthnProvider>
+                          <SentryTracer />
+                        </TronWalletProvider>
+                      </TonConnectUIProvider>
+                    </StellarWalletProvider>
+                  </SolanaWalletProvider>
+                </NearWalletProvider>
+                {APP_ENV === "development" && (
+                  <ReactQueryDevtools initialIsOpen={false} />
+                )}
+              </QueryClientProvider>
+            </WagmiProvider>
+          </ThemeProvider>
+        </AntdRegistry>
       </body>
       {/* <GoogleAnalytics gaId="G-WNE3NB46KM" /> */}
       {HELPSCOUT_BEACON_ID && <Helpscout />}
