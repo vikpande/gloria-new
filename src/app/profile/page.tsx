@@ -10,21 +10,19 @@ import {
   UserOutlined,
 } from "@ant-design/icons"
 import { getCategoryNames } from "@src/utils/categories"
-import {
-  Avatar,
-  Button,
-  Card,
-  Divider,
-  Form,
-  Input,
-  List,
-  Progress,
-  Space,
-  Statistic,
-  Tag,
-  Typography,
-  message,
-} from "antd"
+import Avatar from "antd/es/avatar"
+import Button from "antd/es/button"
+import Card from "antd/es/card"
+import Divider from "antd/es/divider"
+import Form from "antd/es/form"
+import Input from "antd/es/input"
+import List from "antd/es/list"
+import message from "antd/es/message"
+import Progress from "antd/es/progress"
+import Space from "antd/es/space"
+import Statistic from "antd/es/statistic"
+import Tag from "antd/es/tag"
+import Typography from "antd/es/typography"
 import type React from "react"
 import { useMemo, useState } from "react"
 

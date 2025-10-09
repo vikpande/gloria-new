@@ -6,7 +6,9 @@ import {
   SendOutlined,
   UserOutlined,
 } from "@ant-design/icons"
-import { Avatar, Button, Typography } from "antd"
+import Avatar from "antd/es/avatar"
+import Button from "antd/es/button"
+import Typography from "antd/es/typography"
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 

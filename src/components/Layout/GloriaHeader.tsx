@@ -1,8 +1,12 @@
 "use client"
 
 import { MenuOutlined, RobotOutlined } from "@ant-design/icons"
-import { Button, Drawer, Layout, Menu, Tooltip } from "antd"
-import type { MenuProps } from "antd"
+import Button from "antd/es/button"
+import Drawer from "antd/es/drawer"
+import Layout from "antd/es/layout"
+import Menu from "antd/es/menu"
+import type { MenuProps } from "antd/es/menu"
+import Tooltip from "antd/es/tooltip"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import type React from "react"
@@ -14,6 +18,8 @@ const ConnectWallet = dynamic(() => import("@src/components/Wallet"), {
     <Button className="bg-black hover:bg-gray-900">Sign in</Button>
   ),
 })
+
+const { Header: AntHeader } = Layout
 
 interface HeaderProps {
   balance?: number
@@ -63,7 +69,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
 
   return (
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <Layout.Header className="!px-4 lg:!px-6 bg-white h-16 flex items-center">
+      <AntHeader className="!px-4 lg:!px-6 bg-white h-16 flex items-center">
         {/* LEFT: Brand + Mobile Menu Button */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <button
@@ -117,7 +123,7 @@ const GloriaHeader: React.FC<HeaderProps> = ({
           {/* <AddTurboChainButton /> */}
           <ConnectWallet />
         </div>
-      </Layout.Header>
+      </AntHeader>
 
       {/* Mobile Drawer for Navigation */}
       <Drawer

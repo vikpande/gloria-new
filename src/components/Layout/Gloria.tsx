@@ -1,6 +1,6 @@
 "use client"
 
-import { Layout } from "antd"
+import Layout from "antd/es/layout"
 import { useRouter } from "next/navigation"
 import type React from "react"
 import { useState } from "react"
@@ -12,7 +12,7 @@ import { useMixpanelBus } from "@src/hooks/useMixpanelBus"
 import { usePathLogging } from "@src/hooks/usePathLogging"
 import { WalletVerificationProvider } from "@src/providers/WalletVerificationProvider"
 
-
+const { Content, Sider } = Layout
 const HEADER_PX = 64
 
 const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
@@ -44,7 +44,7 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
         style={{ height: `calc(100vh - ${HEADER_PX}px)` }}
       >
         {!isMobile && isAssistantVisible && (
-          <Layout.Sider
+          <Sider
             width={350}
             collapsedWidth={0}
             className="bg-gray-50 border-r border-gray-200"
@@ -58,9 +58,9 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
             >
               <AssistantPanel className="h-full" onCollapse={onHideAssistant} />
             </div>
-          </Layout.Sider>
+          </Sider>
         )}
-        <Layout.Content className="bg-white p-6 overflow-y-auto">{children}</Layout.Content>
+        <Content className="bg-white p-6 overflow-y-auto">{children}</Content>
         {/* <Footer />
       <NavbarMobile />
       <PageBackground /> */}

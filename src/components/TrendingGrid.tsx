@@ -2,7 +2,7 @@
 
 import { FireOutlined } from "@ant-design/icons"
 import MarketCard, { type MarketCardProps } from "@src/components/MarketCard"
-import { Segmented } from "antd"
+import Segmented from "antd/es/segmented"
 import type React from "react"
 import { useMemo, useState } from "react"
 

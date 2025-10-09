@@ -10,20 +10,18 @@ import {
   RiseOutlined,
   TeamOutlined,
 } from "@ant-design/icons"
-import {
-  Avatar,
-  Button,
-  Card,
-  Collapse,
-  Divider,
-  InputNumber,
-  List,
-  Segmented,
-  Statistic,
-  Tag,
-  Tooltip,
-  Typography,
-} from "antd"
+import Avatar from "antd/es/avatar"
+import Button from "antd/es/button"
+import Card from "antd/es/card"
+import Collapse from "antd/es/collapse"
+import Divider from "antd/es/divider"
+import InputNumber from "antd/es/input-number"
+import List from "antd/es/list"
+import Segmented from "antd/es/segmented"
+import Statistic from "antd/es/statistic"
+import Tag from "antd/es/tag"
+import Tooltip from "antd/es/tooltip"
+import Typography from "antd/es/typography"
 import { useRouter } from "next/navigation"
 import type React from "react"
 import { useMemo, useState } from "react"

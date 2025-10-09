@@ -7,7 +7,12 @@ import {
   RightOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons"
-import { Avatar, Button, Card, Input, List, Tag } from "antd"
+import Avatar from "antd/es/avatar"
+import Button from "antd/es/button"
+import Card from "antd/es/card"
+import Input from "antd/es/input"
+import List from "antd/es/list"
+import Tag from "antd/es/tag"
 import type React from "react"
 
 /* ---------------- Sparkline (no extra libs) ---------------- */
@@ -87,9 +92,8 @@ function NewsRow({ item }: { item: Row }) {
               {item.percent}%
             </div>
             <div
-              className={`inline-flex items-center gap-1 text-sm ${
-                item.trend === "up" ? "text-green-600" : "text-red-600"
-              }`}
+              className={`inline-flex items-center gap-1 text-sm ${item.trend === "up" ? "text-green-600" : "text-red-600"
+                }`}
             >
               <TrendIcon /> {Math.abs(item.changePct)}%
             </div>

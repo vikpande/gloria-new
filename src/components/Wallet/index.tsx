@@ -15,7 +15,7 @@ import useShortAccountId from "@src/hooks/useShortAccountId"
 import { FeatureFlagsContext } from "@src/providers/FeatureFlagsProvider"
 import { useSignInWindowOpenState } from "@src/stores/useSignInWindowOpenState"
 import { mapStringToEmojis } from "@src/utils/emoji"
-import { Button } from "antd"
+import Button from "antd/es/button"
 import { TonConnectButton } from "./TonConnectButton"
 
 const ConnectWallet = () => {

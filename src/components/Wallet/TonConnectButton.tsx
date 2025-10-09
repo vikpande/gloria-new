@@ -2,7 +2,7 @@
 
 import { Text } from "@radix-ui/themes"
 import { useTonConnectUI } from "@tonconnect/ui-react"
-import { Button } from "antd"
+import Button from "antd/es/button"
 import Image from "next/image"
 
 export function TonConnectButton() {

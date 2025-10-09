@@ -5,7 +5,12 @@ import {
   CaretDownOutlined,
   CaretUpOutlined,
 } from "@ant-design/icons"
-import { Button, Card, Divider, Tag, Tooltip, Typography } from "antd"
+import Button from "antd/es/button"
+import Card from "antd/es/card"
+import Divider from "antd/es/divider"
+import Tag from "antd/es/tag"
+import Tooltip from "antd/es/tooltip"
+import Typography from "antd/es/typography"
 import Link from "next/link"
 import type React from "react"
 
