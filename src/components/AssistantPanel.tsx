@@ -116,7 +116,7 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
                 size="small"
                 icon={m.isUser ? <UserOutlined /> : <RobotOutlined />}
                 className={
-                  m.isUser ? "bg-black text-white" : "bg-gray-300 text-white"
+                  m.isUser ? "bg-black text-white" : "bg-gray-300 text-white p-3"
                 }
               />
               <div
@@ -145,7 +145,7 @@ const AssistantPanel: React.FC<AssistantPanelProps> = ({
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask me about markets, odds, or predictions..."
-            className="flex-1 text-sm px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black bg-gray-50"
+            className="flex-1 text-sm px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-gray-300 focus:outline-none"
           />
           <Button
             type="primary"

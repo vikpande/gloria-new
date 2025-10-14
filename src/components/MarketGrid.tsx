@@ -30,70 +30,83 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
   }, [markets, activeTab, deferredQuery])
 
   return (
-    <div className={`w-full ${className}`}>
-      <div className="space-y-1 mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">
-          Prediction Markets
-        </h2>
-        <p className="text-gray-500 text-sm">
-          Trade on the outcomes of future events
-        </p>
+    <div className={`market-grid-container ${className}`}>
+      <div className="search-section ">
+        <div className="search-content pb-4">
+          <div className="text-center mb-4 mt-6">
+            <h1 className="text-3xl font-normal text-gray-900 mb-1">
+              Prediction Markets
+            </h1>
+            <p className="text-sm text-gray-600">
+              Trade on the outcomes of future events
+            </p>
+          </div>
+
+          <div className="search-bar-wrapper">
+            <div className="search-bar-container">
+              <SearchOutlined className="search-icon" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search prediction markets..."
+                className="search-input"
+              />
+            </div>
+          </div>
+
+          <div className="categories-container">
+            <div className="categories-wrapper">
+              {CATEGORIES.map((cat) => (
+                <button
+                  type="button"
+                  key={cat}
+                  onClick={() => setActiveTab(cat)}
+                  className={`category-button ${activeTab === cat ? 'active' : ''}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-6">
-        <div className="relative flex-1 max-w-md">
-          <SearchOutlined className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search markets..."
-            className="w-full h-9 pl-9 pr-3 text-sm rounded-md bg-gray-100 border border-gray-200 
-                       focus:outline-none focus:ring-1 focus:ring-black"
-          />
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map((cat) => (
-            <button
-              type="button"
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`px-3 h-9 rounded-md text-sm font-medium transition ${
-                activeTab === cat
-                  ? "bg-black text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+      <div className="results-section">
+        <div className="results-content">
+          {filtered.length > 0 ? (
+            <div className="markets-grid">
+              {filtered.map((m) => (
+                <MarketCard key={m.id} {...m} className="market-card-item" />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <div className="empty-state-card">
+                <SearchOutlined className="empty-state-icon" />
+                <h3 className="empty-state-title">
+                  {query || activeTab !== "all"
+                    ? "No Markets Found"
+                    : "No Markets Available"}
+                </h3>
+                <p className="empty-state-description">
+                  {query || activeTab !== "all"
+                    ? "We couldn't find any markets matching your search. Try different keywords or create your own market."
+                    : "Don't see what you're looking for? Create a prediction market on any topic and start trading."}
+                </p>
+                <button
+                  type="button"
+                  className="create-market-btn"
+                  onClick={() => console.log('Create market clicked')}
+                >
+                  <span className="create-market-btn-icon">+</span>
+                  Create New Market
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {filtered.length > 0 ? (
-        <div
-          className="
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            lg:grid-cols-3 
-            xl:grid-cols-4 
-            2xl:grid-cols-5 
-            gap-5
-          "
-        >
-          {filtered.map((m) => (
-            <MarketCard key={m.id} {...m} className="w-full h-full" />
-          ))}
-        </div>
-      ) : (
-        <div className="py-10 text-center text-gray-500 text-sm">
-          {query || activeTab !== "all"
-            ? "No markets found matching your filters"
-            : "No markets available at the moment"}
-        </div>
-      )}
     </div>
   )
 }

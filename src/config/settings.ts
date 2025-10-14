@@ -1,45 +1,45 @@
 import type { Settings } from "@src/types/interfaces"
 
 export const settings: Settings = {
-  appName: "NEAR Intents",
+  appName: "Gloria Beta",
   metadata: {
     home: {
-      title: "NEAR Intents | The Smartest Way to Trade Across Chains",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Swap tokens across any blockchain using NEAR Intents. Submit your intent and get the best price from solvers with secure, on-chain execution.",
+        "The Smartest Way to Trade Across Chains"
     },
     deposit: {
-      title: "NEAR Intents | Secure Cross-Chain Funding to Trade Across Chains",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Deposit tokens from any chain into NEAR Intents. Kick off cross-chain transactions, DeFi automation, and smart settlements.",
+        "The Smartest Way to Trade Across Chains"
     },
     jobs: {
-      title: "Careers - Join Our Team",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Join for exciting careers in blockchain and cross-chain technology. Apply today and start shaping the future of decentralized finance!",
+        "The Smartest Way to Trade Across Chains"
     },
     landing: {
-      title: "Your Multichain DeFi Hub",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "The premier platform for cross-chain liquidity and trading. Experience efficient, secure, and transparent swaps across multiple blockchains.",
+        "The Smartest Way to Trade Across Chains"
     },
     wallet: {
-      title: "Manage Your Digital Wallet",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Secure and easy access to your digital assets. Track balances, manage transactions, and more.",
+        "The Smartest Way to Trade Across Chains"
     },
     withdraw: {
-      title: "NEAR Intents | Low Fees, Best Rates & Seamless Cross‑Chain Exits",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Withdraw crypto from NEAR to any supported chain. Fast, secure, and powered by smart intent execution.",
+        "The Smartest Way to Trade Across Chains"
     },
     giftCreate: {
-      title: "NEAR Intents | Send a Multichain Crypto Gift",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Create a Web3 gift card using NEAR Intents. Preload tokens and send across chains with blockchain-backed security.",
+        "The Smartest Way to Trade Across Chains"
     },
     giftView: {
-      title: "NEAR Intents | Claim Your Crypto Gift",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
         "You’ve received a gift! Claim tokens securely into NEAR Intents and use them across chains — swap, withdraw, or send them however you like.",
       openGraph: {
@@ -57,34 +57,34 @@ export const settings: Settings = {
       },
     },
     otcCreate: {
-      title: "NEAR Intents | Trade P2P Across Chains with Best Execution",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Set up peer-to-peer crypto trades across chains with smart execution. No middlemen, just intent-based trustless trading.",
+        "The Smartest Way to Trade Across Chains"
     },
     otcView: {
-      title: "NEAR Intents | View OTC Trade Order",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Review your OTC order and monitor solver bids. Full transparency with blockchain-based execution.",
+        "The Smartest Way to Trade Across Chains"
     },
     account: {
-      title: "NEAR Intents | Multichain Account & Wallet Overview",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "View balances and manage your wallet across chains. Your gateway to seamless swaps, deposits, and withdrawals in DeFi.",
+        "The Smartest Way to Trade Across Chains"
     },
     termsAndConditions: {
-      title: "NEAR Intents | Terms & Conditions",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Read our terms and conditions for using NEAR Intents. Your security and privacy are our top priorities.",
+        "The Smartest Way to Trade Across Chains"
     },
     privacyPolicy: {
-      title: "NEAR Intents | Privacy Policy",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Read our privacy policy for using NEAR Intents. Your security and privacy are our top priorities.",
+        "The Smartest Way to Trade Across Chains"
     },
     termsOfService: {
-      title: "NEAR Intents | Terms of Service",
+      title: "Gloria Beta | The Smartest Way to Trade Across Chains",
       description:
-        "Read our terms of service for using NEAR Intents. Your security and privacy are our top priorities.",
+        "The Smartest Way to Trade Across Chains"
     },
   },
 }

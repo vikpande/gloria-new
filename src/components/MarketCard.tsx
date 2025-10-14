@@ -85,7 +85,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
         <Link href={`/market/${id}`}>
           <Typography.Title
             level={5}
-            className="!mb-0 text-gray-900 leading-snug font-semibold hover:text-blue-600 cursor-pointer transition-colors"
+            className="!mb-0 text-gray-900 leading-snug font-semibold hover:text-black cursor-pointer transition-colors"
           >
             {title}
           </Typography.Title>

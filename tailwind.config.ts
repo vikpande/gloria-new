@@ -342,7 +342,9 @@ const config: Config = {
     },
   },
   plugins: [
-    forms,
+    forms({
+      strategy: 'class', // Only apply form styles when using form-* classes
+    }),
     typography,
     animate,
     plugin(({ addUtilities }) => {

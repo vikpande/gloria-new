@@ -1,7 +1,7 @@
 "use client"
 
 import Layout from "antd/es/layout"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import type React from "react"
 import { useState } from "react"
 import type { PropsWithChildren } from "react"
@@ -17,17 +17,17 @@ const HEADER_PX = 64
 
 const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter()
+  const pathname = usePathname()
   usePathLogging()
   useMixpanelBus()
 
   const [isAssistantVisible, setIsAssistantVisible] = useState(true)
-
+  const isHomePage = pathname === "/" || pathname === "" || pathname === "/market"
   const onMenuClick = (key: string) => {
     router.push(`/${key}`)
   }
 
   const onHideAssistant = () => setIsAssistantVisible((v) => !v)
-
   const [isMobile, _setIsMobile] = useState(false)
   const [drawerOpen, _setDrawerOpen] = useState(false)
 
@@ -60,7 +60,7 @@ const GloriaLayout: React.FC<PropsWithChildren> = ({ children }) => {
             </div>
           </Sider>
         )}
-        <Content className="bg-white p-6 overflow-y-auto">{children}</Content>
+        <Content className={`bg-white ${isHomePage ? 'overflow-hidden' : 'overflow-y-auto p-6'}`}>{children}</Content>
         {/* <Footer />
       <NavbarMobile />
       <PageBackground /> */}
