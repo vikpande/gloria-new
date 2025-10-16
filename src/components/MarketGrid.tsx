@@ -1,6 +1,7 @@
 "use client"
 
 import { SearchOutlined } from "@ant-design/icons"
+import CreateMarketModal from "@src/components/CreateMarketModal"
 import MarketCard, { type MarketCardProps } from "@src/components/MarketCard"
 import { getCategoryWithAll } from "@src/utils/categories"
 import type React from "react"
@@ -13,9 +14,11 @@ interface MarketGridProps {
 
 const CATEGORIES = getCategoryWithAll().map((cat) => cat.value)
 
-const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
+const MarketGrid: React.FC<MarketGridProps> = ({ markets: initialMarkets, className = "" }) => {
+  const [markets, setMarkets] = useState<MarketCardProps[]>(initialMarkets)
   const [query, setQuery] = useState("")
   const [activeTab, setActiveTab] = useState("all")
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const deferredQuery = useDeferredValue(query)
 
   const filtered = useMemo(() => {
@@ -29,14 +32,28 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
     })
   }, [markets, activeTab, deferredQuery])
 
+  const handleCreateMarket = (newMarket: MarketCardProps) => {
+    setMarkets((prev) => [newMarket, ...prev])
+  }
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className={`market-grid-container ${className}`}>
       <div className="search-section ">
         <div className="search-content pb-4">
           <div className="text-center mb-4 mt-6">
-            <h1 className="text-3xl font-normal text-gray-900 mb-1">
-              Prediction Markets
-            </h1>
+            <div className="flex items-center justify-center gap-4 mb-1">
+              <h1 className="text-3xl font-normal text-gray-900">
+                Prediction Markets
+              </h1>
+            </div>
             <p className="text-sm text-gray-600">
               Trade on the outcomes of future events
             </p>
@@ -97,7 +114,7 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
                 <button
                   type="button"
                   className="create-market-btn"
-                  onClick={() => console.log('Create market clicked')}
+                  onClick={handleOpenModal}
                 >
                   <span className="create-market-btn-icon">+</span>
                   Create New Market
@@ -107,6 +124,12 @@ const MarketGrid: React.FC<MarketGridProps> = ({ markets, className = "" }) => {
           )}
         </div>
       </div>
+
+      <CreateMarketModal
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        onCreateMarket={handleCreateMarket}
+      />
     </div>
   )
 }
